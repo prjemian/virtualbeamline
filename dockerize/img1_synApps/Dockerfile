@@ -67,6 +67,7 @@ RUN bash assemble_synApps.sh
 # RUN ln -s synApps-6.1  synApps
 
 # WORKDIR ${SUPPORT}
+# RUN ls -lAFgh
 # # edit a few things before build
 # # done editing
 # RUN make release
