@@ -25,7 +25,7 @@ RUN \
     rm -rf /var/lib/apt/lists/*
 
 ENV EPICS_HOST_ARCH=linux-x86_64
-ENV EPICS_ROOT="/opt/epics-base-7.0.3"
+ENV EPICS_ROOT="/opt/epics-base"
 ENV PATH="${PATH}:${EPICS_ROOT}/bin/${EPICS_HOST_ARCH}"
 ENV SYNAPPS_PARENT="/opt"
 ENV SUPPORT="${SYNAPPS_PARENT}/synApps/support"
@@ -37,7 +37,7 @@ ENV HASH=cc5adba5b8848c9cb98ab96768d668ae927d8859
 RUN wget https://raw.githubusercontent.com/EPICS-synApps/support/${HASH}/assemble_synApps.sh
 
 # edit the script first!
-RUN sed -i s='/APSshare/epics/base-3.15.6'='/opt/epics-base-7.0.3'=g assemble_synApps.sh
+RUN sed -i s='/APSshare/epics/base-3.15.6'='/opt/epics-base'=g assemble_synApps.sh
 # do NOT build these for linux-x86_64
 RUN sed -i s/'ALLENBRADLEY='/'#ALLENBRADLEY='/g assemble_synApps.sh
 # RUN sed -i s/'ALIVE='/'#ALIVE='/g assemble_synApps.sh
@@ -73,6 +73,3 @@ RUN bash assemble_synApps.sh
 # RUN make release
 # RUN make
 # # RUN make install
-
-
-# build: docker build -t prjemian/epics:synApps-6.1 ./ 2>&1 | tee build-log.txt
