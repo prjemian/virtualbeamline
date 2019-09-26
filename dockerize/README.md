@@ -21,3 +21,21 @@ docker login --user prjemian
 docker tag local-image:tagname prjemian/epics:tagname
 docker push prjemian/epics:tagname
 ```
+
+### ADSim
+
+from: https://areadetector.github.io/master/install_guide.html#run-simdetector
+
+```
+cd ADSimDetector/iocs/simDetectorIOC/iocBoot/iocSimDetector
+### Edit Makefile to set ARCH to your $(EPICS_HOST_ARCH) architecture
+make
+../../bin/linux-x86_64/simDetectorApp st.cmd
+
+### If you want to be able to easily run Linux and Windows in the same tree do the following:
+###   Set ARCH in Makefile for Linux, run make on the Linux machine, and copy envPaths to envPaths.linux
+###   Set ARCH in Makefile for Windows, run make on the Windows machine, and copy envPaths to envPaths.windows
+### Start the IOC for Linux:
+../../bin/linux-x86_64/simDetectorApp st.cmd.linux
+### Start the IOC for Windows:
+```
