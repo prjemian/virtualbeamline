@@ -30,4 +30,4 @@ WORKDIR ${EPICS_ROOT}
 #RUN ls -lAFg
 RUN make -j4 CFLAGS="-fPIC" CXXFLAGS="-fPIC"
 
-# TODO: remove unnecessary bulk
+RUN make clean
