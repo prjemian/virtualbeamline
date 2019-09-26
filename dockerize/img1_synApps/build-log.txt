@@ -1,0 +1,1017 @@
+Sending build context to Docker daemon   5.12kB
+Step 1/32 : FROM prjemian/epics:epics-base-7.0.3
+ ---> 00580060cd21
+Step 2/32 : LABEL version="0.0.1"       maintainer="prjemian <prjemian@gmail.com>"       lastupdate="2019-09-25"
+ ---> Using cache
+ ---> a1cc0179dcd7
+Step 3/32 : USER  root
+ ---> Using cache
+ ---> 4942309ad351
+Step 4/32 : RUN     apt update  -y &&     apt upgrade -y &&     apt install -y         git        libusb-dev        libusb-1.0-0-dev        re2c        screen        &&     rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> 91ecbea2e329
+Step 5/32 : ENV EPICS_HOST_ARCH=linux-x86_64
+ ---> Running in 47d496014051
+Removing intermediate container 47d496014051
+ ---> 1b77922ec2e3
+Step 6/32 : ENV EPICS_ROOT="/opt/epics-base-7.0.3"
+ ---> Running in 91931ebc4336
+Removing intermediate container 91931ebc4336
+ ---> b3cdd4755604
+Step 7/32 : ENV PATH="${PATH}:${EPICS_ROOT}/bin/${EPICS_HOST_ARCH}"
+ ---> Running in 55f6f62ffb6e
+Removing intermediate container 55f6f62ffb6e
+ ---> ea7881003c5f
+Step 8/32 : ENV SYNAPPS_PARENT="/opt"
+ ---> Running in 30a57b8d40d6
+Removing intermediate container 30a57b8d40d6
+ ---> 726197e16285
+Step 9/32 : ENV SUPPORT="${SYNAPPS_PARENT}/synApps/support"
+ ---> Running in c1e4c8ead342
+Removing intermediate container c1e4c8ead342
+ ---> f05369b374e2
+Step 10/32 : ENV PATH="${PATH}:${SUPPORT}/utils"
+ ---> Running in dd47e7712f4c
+Removing intermediate container dd47e7712f4c
+ ---> 7f9330f31b9c
+Step 11/32 : WORKDIR ${SYNAPPS_PARENT}
+ ---> Running in 71dafa0ee137
+Removing intermediate container 71dafa0ee137
+ ---> 58a72c95d19b
+Step 12/32 : ENV HASH=cc5adba5b8848c9cb98ab96768d668ae927d8859
+ ---> Running in a6d47fce0d40
+Removing intermediate container a6d47fce0d40
+ ---> b12817c38373
+Step 13/32 : RUN wget https://raw.githubusercontent.com/EPICS-synApps/support/${HASH}/assemble_synApps.sh
+ ---> Running in f0862c67ddfa
+[91m--2019-09-26 05:08:05--  https://raw.githubusercontent.com/EPICS-synApps/support/cc5adba5b8848c9cb98ab96768d668ae927d8859/assemble_synApps.sh
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... [0m[91m199.232.4.133
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|199.232.4.133|:443... [0m[91mconnected.
+[0m[91mHTTP request sent, awaiting response... [0m[91m200 OK
+Length: 11872 (12K) [text/plain]
+Saving to: 'assemble_synApps.sh'
+
+     0K .[0m[91m.....[0m[91m.... .                                          100% 4.89M=0.002s
+
+2019-09-26 05:08:06 (4.89 MB/s) - 'assemble_synApps.sh' saved [11872/11872]
+
+[0mRemoving intermediate container f0862c67ddfa
+ ---> 3c07f088c063
+Step 14/32 : RUN sed -i s='/APSshare/epics/base-3.15.6'='/opt/epics-base-7.0.3'=g assemble_synApps.sh
+ ---> Running in 2bcc8e8fd0b8
+Removing intermediate container 2bcc8e8fd0b8
+ ---> 6339c7adb67b
+Step 15/32 : RUN sed -i s/'ALLENBRADLEY='/'#ALLENBRADLEY='/g assemble_synApps.sh
+ ---> Running in 488b177d3829
+Removing intermediate container 488b177d3829
+ ---> d22361bd2d4d
+Step 16/32 : RUN sed -i s/'CAMAC='/'#CAMAC='/g assemble_synApps.sh
+ ---> Running in 464701fa7cc5
+Removing intermediate container 464701fa7cc5
+ ---> 2f08047c6502
+Step 17/32 : RUN sed -i s/'DAC128V='/'#DAC128V='/g assemble_synApps.sh
+ ---> Running in 1d5440d9ebcc
+Removing intermediate container 1d5440d9ebcc
+ ---> b57aac51fdf5
+Step 18/32 : RUN sed -i s/'DELAYGEN='/'#DELAYGEN='/g assemble_synApps.sh
+ ---> Running in b50b4657e4f8
+Removing intermediate container b50b4657e4f8
+ ---> 24164ff15148
+Step 19/32 : RUN sed -i s/'DXP='/'#DXP='/g assemble_synApps.sh
+ ---> Running in 8b746a072831
+Removing intermediate container 8b746a072831
+ ---> c4a077b44b94
+Step 20/32 : RUN sed -i s/'DXPSITORO='/'#DXPSITORO='/g assemble_synApps.sh
+ ---> Running in bc4fae23523e
+Removing intermediate container bc4fae23523e
+ ---> c426abc93356
+Step 21/32 : RUN sed -i s/'IP330='/'#IP330='/g assemble_synApps.sh
+ ---> Running in 804546365e54
+Removing intermediate container 804546365e54
+ ---> 2e4a119bd5bc
+Step 22/32 : RUN sed -i s/'IPUNIDIG='/'#IPUNIDIG='/g assemble_synApps.sh
+ ---> Running in 75bf06b5355e
+Removing intermediate container 75bf06b5355e
+ ---> 3a2aa5d53dfc
+Step 23/32 : RUN sed -i s/'LOVE='/'#LOVE='/g assemble_synApps.sh
+ ---> Running in 21e3e2cee0c3
+Removing intermediate container 21e3e2cee0c3
+ ---> d50f494a38a5
+Step 24/32 : RUN sed -i s/'QUADEM='/'#QUADEM='/g assemble_synApps.sh
+ ---> Running in 70223cf69a3f
+Removing intermediate container 70223cf69a3f
+ ---> 6456bc38b913
+Step 25/32 : RUN sed -i s/'SOFTGLUE='/'#SOFTGLUE='/g assemble_synApps.sh
+ ---> Running in a9af59977b88
+Removing intermediate container a9af59977b88
+ ---> 6d2b4c24dcf8
+Step 26/32 : RUN sed -i s/'SOFTGLUEZYNQ='/'#SOFTGLUEZYNQ='/g assemble_synApps.sh
+ ---> Running in 7e70ee13ac5d
+Removing intermediate container 7e70ee13ac5d
+ ---> 1420ce020751
+Step 27/32 : RUN sed -i s/'VME='/'#VME='/g assemble_synApps.sh
+ ---> Running in 1f2e9c513f31
+Removing intermediate container 1f2e9c513f31
+ ---> 55e43b206c05
+Step 28/32 : RUN sed -i s/'YOKOGAWA_DAS='/'#YOKOGAWA_DAS='/g assemble_synApps.sh
+ ---> Running in c9c14ca47e2a
+Removing intermediate container c9c14ca47e2a
+ ---> 0812382f4461
+Step 29/32 : RUN echo # start ------------------- assemble_synApps.sh -------------------
+ ---> Running in 8e67b705f37d
+
+Removing intermediate container 8e67b705f37d
+ ---> a299218aac14
+Step 30/32 : RUN cat assemble_synApps.sh
+ ---> Running in b6bef589c92e
+#!/bin/bash
+shopt -s expand_aliases
+
+EPICS_BASE=/opt/epics-base-7.0.3
+
+SUPPORT=R6-1
+CONFIGURE=R6-1
+UTILS=R6-1
+DOCUMENTATION=R6-1
+
+#ALLENBRADLEY=2.3
+ALIVE=R1-1-1
+AREA_DETECTOR=R3-7
+ASYN=R4-36
+AUTOSAVE=R5-10
+BUSY=R1-7-2
+CALC=R3-7-3
+#CAMAC=R2-7-1
+CAPUTRECORDER=R1-7-2
+#DAC128V=R2-9
+#DELAYGEN=R1-2-1
+#DXP=R6-0
+#DXPSITORO=R1-2
+DEVIOCSTATS=3.1.16
+#ETHERIP=ether_ip-3-1
+#GALIL=V3-6
+IP=R2-20-1
+IPAC=2.15
+#IP330=R2-9
+#IPUNIDIG=R2-11
+#LOVE=R3-2-7
+LUA=R2-0
+MCA=R7-8
+MEASCOMP=R2-3
+MODBUS=R3-0
+MOTOR=R7-1
+OPTICS=R2-13-3
+#QUADEM=R9-2-1
+SNCSEQ=2.2.6
+#SOFTGLUE=R2-8-2
+#SOFTGLUEZYNQ=R2-0-2
+SSCAN=R2-11-3
+STD=R3-6
+STREAM=2.8.9
+VAC=R1-9
+#VME=R2-9-2
+#YOKOGAWA_DAS=R2-0-1
+XXX=R6-1
+
+
+
+shallow_repo()
+{
+	PROJECT=$1
+	MODULE_NAME=$2
+	RELEASE_NAME=$3
+	TAG=$4
+	
+	FOLDER_NAME=$MODULE_NAME-${TAG//./-}
+	
+	echo
+	echo "Grabbing $MODULE_NAME at tag: $TAG"
+	echo
+	
+	git clone -q --branch $TAG --depth 1 https://github.com/$PROJECT/$MODULE_NAME.git $FOLDER_NAME
+	
+	echo "$RELEASE_NAME=\$(SUPPORT)/$FOLDER_NAME" >> ./configure/RELEASE
+	
+	echo
+}
+
+full_repo()
+{
+	PROJECT=$1
+	MODULE_NAME=$2
+	RELEASE_NAME=$3
+	TAG=$4
+	
+	FOLDER_NAME=$MODULE_NAME-${TAG//./-}
+	
+	echo
+	echo "Grabbing $MODULE_NAME at tag: $TAG"
+	echo
+	
+	git clone -q https://github.com/$PROJECT/$MODULE_NAME.git $FOLDER_NAME
+	
+	CURR=$(pwd)
+	
+	cd $FOLDER_NAME
+	git checkout -q $TAG
+	cd "$CURR"
+	echo "$RELEASE_NAME=\$(SUPPORT)/$FOLDER_NAME" >> ./configure/RELEASE
+	
+	echo
+}
+
+
+shallow_support()
+{
+	git clone -q --branch $2 --depth 1 https://github.com/EPICS-synApps/$1.git
+}
+
+
+full_support()
+{
+	git clone -q https://github.com/EPICS-synApps/$1.git
+	cd $1
+	git checkout -q $2
+	cd ..
+}
+
+alias get_support='shallow_support'
+alias get_repo='shallow_repo'
+
+if [ "$1" == "full" ]; then
+	alias get_support='full_support'
+	alias get_repo='full_repo'
+fi
+
+
+# Assume user has nothing but this file, just in case that's true.
+mkdir synApps
+cd synApps
+
+get_support support $SUPPORT
+cd support
+
+get_support configure      $CONFIGURE
+get_support utils          $UTILS
+get_support documentation  $DOCUMENTATION
+
+SUPPORT=$(pwd)
+
+echo "SUPPORT=$SUPPORT" > configure/RELEASE
+echo '-include $(TOP)/configure/SUPPORT.$(EPICS_HOST_ARCH)' >> configure/RELEASE
+echo "EPICS_BASE=$EPICS_BASE" >> configure/RELEASE
+echo '-include $(TOP)/configure/EPICS_BASE' >> configure/RELEASE
+echo '-include $(TOP)/configure/EPICS_BASE.$(EPICS_HOST_ARCH)' >> configure/RELEASE
+echo "" >> configure/RELEASE
+echo "" >> configure/RELEASE
+
+# modules ##################################################################
+
+#                               get_repo Git Project            Git Repo       RELEASE Name   Tag
+if [[ $ALIVE ]];         then   get_repo epics-modules          alive          ALIVE          $ALIVE         ; fi
+if [[ $ASYN ]];          then   get_repo epics-modules          asyn           ASYN           $ASYN          ; fi
+if [[ $AUTOSAVE ]];      then   get_repo epics-modules          autosave       AUTOSAVE       $AUTOSAVE      ; fi
+if [[ $BUSY ]];          then   get_repo epics-modules          busy           BUSY           $BUSY          ; fi
+if [[ $CALC ]];          then   get_repo epics-modules          calc           CALC           $CALC          ; fi
+if [[ $CAMAC ]];         then   get_repo epics-modules          camac          CAMAC          $CAMAC         ; fi
+if [[ $CAPUTRECORDER ]]; then   get_repo epics-modules          caputRecorder  CAPUTRECORDER  $CAPUTRECORDER ; fi
+if [[ $DAC128V ]];       then   get_repo epics-modules          dac128V        DAC128V        $DAC128V       ; fi
+if [[ $DELAYGEN ]];      then   get_repo epics-modules          delaygen       DELAYGEN       $DELAYGEN      ; fi
+if [[ $DXP ]];           then   get_repo epics-modules          dxp            DXP            $DXP           ; fi
+if [[ $DXPSITORO ]];     then   get_repo epics-modules          dxpSITORO      DXPSITORO      $DXPSITORO     ; fi
+if [[ $DEVIOCSTATS ]];   then   get_repo epics-modules          iocStats       DEVIOCSTATS    $DEVIOCSTATS   ; fi
+if [[ $ETHERIP ]];       then   get_repo EPICSTools             ether_ip       ETHERIP        $ETHERIP       ; fi
+if [[ $GALIL ]];         then   get_repo motorapp               Galil-3-0      GALIL          $GALIL         ; fi
+if [[ $IP ]];            then   get_repo epics-modules          ip             IP             $IP            ; fi
+if [[ $IPAC ]];          then   get_repo epics-modules          ipac           IPAC           $IPAC          ; fi
+if [[ $IP330 ]];         then   get_repo epics-modules          ip330          IP330          $IP330         ; fi
+if [[ $IPUNIDIG ]];      then   get_repo epics-modules          ipUnidig       IPUNIDIG       $IPUNIDIG      ; fi
+if [[ $LOVE ]];          then   get_repo epics-modules          love           LOVE           $LOVE          ; fi
+if [[ $LUA ]];           then   get_repo epics-modules          lua            LUA            $LUA           ; fi
+if [[ $MCA ]];           then   get_repo epics-modules          mca            MCA            $MCA           ; fi
+if [[ $MEASCOMP ]];      then   get_repo epics-modules          measComp       MEASCOMP       $MEASCOMP      ; fi
+if [[ $MODBUS ]];        then   get_repo epics-modules          modbus         MODBUS         $MODBUS        ; fi
+if [[ $MOTOR ]];         then   get_repo epics-modules          motor          MOTOR          $MOTOR         ; fi
+if [[ $OPTICS ]];        then   get_repo epics-modules          optics         OPTICS         $OPTICS        ; fi
+if [[ $QUADEM ]];        then   get_repo epics-modules          quadEM         QUADEM         $QUADEM        ; fi
+if [[ $SOFTGLUE ]];      then   get_repo epics-modules          softGlue       SOFTGLUE       $SOFTGLUE      ; fi
+if [[ $SOFTGLUEZYNQ ]];  then   get_repo epics-modules          softGlueZynq   SOFTGLUEZYNQ   $SOFTGLUEZYNQ  ; fi
+if [[ $SSCAN ]];         then   get_repo epics-modules          sscan          SSCAN          $SSCAN         ; fi
+if [[ $STD ]];           then   get_repo epics-modules          std            STD            $STD           ; fi
+if [[ $STREAM ]];        then   get_repo paulscherrerinstitute  StreamDevice   STREAM         $STREAM        ; fi
+if [[ $VAC ]];           then   get_repo epics-modules          vac            VAC            $VAC           ; fi
+if [[ $VME ]];           then   get_repo epics-modules          vme            VME            $VME           ; fi
+if [[ $YOKOGAWA_DAS ]];  then   get_repo epics-modules          Yokogawa_DAS   YOKOGAWA_DAS   $YOKOGAWA_DAS  ; fi
+if [[ $XXX ]];           then   get_repo epics-modules          xxx            XXX            $XXX           ; fi
+
+
+if [[ $AREA_DETECTOR ]]
+then 
+
+get_repo  areaDetector  areaDetector  AREA_DETECTOR  $AREA_DETECTOR
+
+cd areaDetector-$AREA_DETECTOR
+git submodule init
+git submodule update ADCore
+git submodule update ADSupport
+git submodule update ADSimDetector
+
+cd ADCore/iocBoot
+
+cp EXAMPLE_commonPlugins.cmd commonPlugins.cmd
+cp EXAMPLE_commonPlugin_settings.req commonPlugin_settings.req
+
+cd ../..
+
+cd configure
+cp EXAMPLE_CONFIG_SITE.local CONFIG_SITE.local
+
+# vxWorks has pthread and other issues
+echo 'WITH_GRAPHICSMAGICK = NO' >> CONFIG_SITE.local.vxWorks
+echo 'WITH_BLOSC = NO' >> CONFIG_SITE.local.vxWorks
+echo 'WITH_BITSHUFFLE = NO' >> CONFIG_SITE.local.vxWorks
+
+
+# linux-arm has X11 and other issues
+echo 'WITH_BITSHUFFLE = NO' >> CONFIG_SITE.local.linux-x86_64.linux-arm
+echo 'WITH_GRAPHICSMAGICK = NO' >> CONFIG_SITE.local.linux-x86_64.linux-arm
+
+# We are still using Epics v3
+echo 'WITH_PVA = NO' >> CONFIG_SITE.local.linux-x86_64
+echo 'WITH_PVA = NO' >> CONFIG_SITE.local.linux-x86_64.linux-arm
+echo 'WITH_PVA = NO' >> CONFIG_SITE.local.vxWorks
+echo 'WITH_PVA = NO' >> CONFIG_SITE.local.win32-x86
+echo 'WITH_PVA = NO' >> CONFIG_SITE.local.windows-x64
+echo 'WITH_PVA = NO' >> CONFIG_SITE.local.win32-x86-static
+echo 'WITH_PVA = NO' >> CONFIG_SITE.local.windows-x64-static
+
+# We are still using Epics v3
+echo 'WITH_QSRV = NO' >> CONFIG_SITE.local.linux-x86_64
+echo 'WITH_QSRV = NO' >> CONFIG_SITE.local.vxWorks
+echo 'WITH_QSRV = NO' >> CONFIG_SITE.local.win32-x86
+echo 'WITH_QSRV = NO' >> CONFIG_SITE.local.windows-x64
+echo 'WITH_QSRV = NO' >> CONFIG_SITE.local.win32-x86-static
+echo 'WITH_QSRV = NO' >> CONFIG_SITE.local.windows-x64-static
+
+# DBD files aren't separated between architectures, so there are issues building
+echo 'BUILD_IOCS = NO' >> CONFIG_SITE.local.linux-x86_64
+echo 'BUILD_IOCS = NO' >> CONFIG_SITE.local.vxWorks
+echo 'BUILD_IOCS = NO' >> CONFIG_SITE.local.win32-x86
+echo 'BUILD_IOCS = NO' >> CONFIG_SITE.local.windows-x64
+echo 'BUILD_IOCS = NO' >> CONFIG_SITE.local.win32-x86-static
+echo 'BUILD_IOCS = NO' >> CONFIG_SITE.local.windows-x64-static
+
+#HDF5 flag for windows
+echo 'HDF5_STATIC_BUILD=$(STATIC_BUILD)' >> CONFIG_SITE.local.win32-x86
+echo 'HDF5_STATIC_BUILD=$(STATIC_BUILD)' >> CONFIG_SITE.local.win32-x86-static
+echo 'HDF5_STATIC_BUILD=$(STATIC_BUILD)' >> CONFIG_SITE.local.windows-x64
+echo 'HDF5_STATIC_BUILD=$(STATIC_BUILD)' >> CONFIG_SITE.local.windows-x64-static
+
+#Can't just use default RELEASE.local because it has simDetector commented out
+echo 'ADSIMDETECTOR=$(AREA_DETECTOR)/ADSimDetector' >> RELEASE.local
+echo 'ADSUPPORT=$(AREA_DETECTOR)/ADSupport' >> RELEASE.local
+echo '-include $(TOP)/configure/RELEASE_PRODS.local' >> RELEASE.local
+echo '-include $(TOP)/configure/RELEASE.local.$(EPICS_HOST_ARCH)' >> RELEASE.local
+
+echo "SUPPORT=$SUPPORT" >> RELEASE_SUPPORT.local
+echo "EPICS_BASE=$EPICS_BASE" >> RELEASE_BASE.local
+
+# make release will give the correct paths for these files, so we just need to rename them
+cp EXAMPLE_RELEASE_PRODS.local RELEASE_PRODS.local
+cp EXAMPLE_RELEASE_LIBS.local RELEASE_LIBS.local
+
+cd ../..
+
+echo 'ADCORE=$(AREA_DETECTOR)/ADCore' >> ./configure/RELEASE
+echo 'ADSUPPORT=$(AREA_DETECTOR)/ADSupport' >> ./configure/RELEASE
+echo 'ADSIMDETECTOR=$(AREA_DETECTOR)/ADSimDetector' >> ./configure/RELEASE
+
+fi
+
+if [[ $DXP ]]
+then
+	cd dxp-$DXP
+	echo "LINUX_USB_INSTALLED = NO" >> ./configure/CONFIG_SITE.linux-x86_64.linux-arm
+	cd ..
+fi
+
+if [[ $MCA ]]
+then
+	cd mca-$MCA
+	echo "LINUX_LIBUSB-1.0_INSTALLED = NO" >> ./configure/CONFIG_SITE.linux-x86_64.linux-arm
+	cd ..
+fi
+
+if [[ $MOTOR ]]
+then
+	cd motor-$MOTOR
+	
+	git submodule init
+	git submodule update
+	
+	cd ..
+fi
+
+if [[ $STREAM ]]
+then
+	cd StreamDevice-${STREAM//./-}
+	
+	# Use the EPICS makefile, rather than PSI's
+	rm GNUmakefile
+	
+	# Don't install to synApps/support
+	sed -i 's/TOP = ../TOP = ./g' ./Makefile
+	sed -i 's/TOP = ..\/../TOP = ../g' ./streamApp/Makefile
+	sed -i 's/TOP = ..\/../TOP = ../g' ./src/Makefile
+	
+	# Comment out PCRE
+	sed -i 's/PCRE=/#PCRE=/g' ./configure/RELEASE
+	
+	echo "SSCAN=" >> ./configure/RELEASE
+	echo "STREAM=" >> ./configure/RELEASE
+	sed -i 's/#PROD_LIBS += sscan/PROD_LIBS += sscan/g' ./streamApp/Makefile
+	cd ..
+fi
+
+
+if [[ $SNCSEQ ]]
+then
+
+# seq
+wget http://www-csr.bessy.de/control/SoftDist/sequencer/releases/seq-$SNCSEQ.tar.gz
+tar zxf seq-$SNCSEQ.tar.gz
+# The synApps build can't handle '.'
+mv seq-$SNCSEQ seq-${SNCSEQ//./-}
+rm -f seq-$SNCSEQ.tar.gz
+echo "SNCSEQ=\$(SUPPORT)/seq-${SNCSEQ//./-}" >> ./configure/RELEASE
+
+fi
+
+
+if [[ $ALLENBRADLEY ]]
+then
+
+# get allenBradley-2-3
+wget http://www.aps.anl.gov/epics/download/modules/allenBradley-$ALLENBRADLEY.tar.gz
+tar xf allenBradley-$ALLENBRADLEY.tar.gz
+mv allenBradley-$ALLENBRADLEY allenBradley-${ALLENBRADLEY//./-}
+rm -f allenBradley-$ALLENBRADLEY.tar.gz
+echo "ALLEN_BRADLEY=\$(SUPPORT)/allenBradley-${ALLENBRADLEY//./-}" >> ./configure/RELEASE
+
+fi
+
+if [[ $GALIL ]]
+then
+
+mv Galil-3-0-$GALIL/3-6 galil-3-6
+rm -Rf Galil-3-0-$GALIL
+cp galil-3-6/config/GALILRELEASE galil-3-6/configure/RELEASE
+echo 'GALIL=$(SUPPORT)/galil-3-6' >> ./configure/RELEASE
+sed -i 's/MODULE_LIST[ ]*=[ ]*MEASCOMP/MODULE_LIST = MEASCOMP GALIL/g' Makefile
+sed -i '/\$(MEASCOMP)_DEPEND_DIRS/a \$(GALIL)_DEPEND_DIRS = \$(AUTOSAVE) \$(SNCSEQ) \$(SSCAN) \$(CALC) \$(ASYN) \$(BUSY) \$(MOTOR) \$(IPAC)' Makefile
+
+fi
+
+make release
+Removing intermediate container b6bef589c92e
+ ---> e8180d037e52
+Step 31/32 : RUN echo # end ------------------- assemble_synApps.sh -------------------
+ ---> Running in 8b269e2590ba
+
+Removing intermediate container 8b269e2590ba
+ ---> b99f6d3fe306
+Step 32/32 : RUN bash assemble_synApps.sh
+ ---> Running in ec60a5ee7d6d
+[91mNote: checking out 'cc5adba5b8848c9cb98ab96768d668ae927d8859'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+[0m[91mNote: checking out 'a1dd723740f9329429e53255373556ab3f0cc59e'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+[0m[91mNote: checking out '91a07979b9679ab92dc088862c17426df8f6dde1'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+[0m[91mNote: checking out '4983b71f1fdbb2d897c73dcab02946aed40a9219'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+[0m
+Grabbing alive at tag: R1-1-1
+
+[91mNote: checking out '07209ac5b8b6c597654d3ea08ee6aed84a7edd24'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+[0m
+
+Grabbing asyn at tag: R4-36
+
+[91mNote: checking out '89c2b93d14cdb7fe48d490785cd7780c1b997277'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+[0m
+
+Grabbing autosave at tag: R5-10
+
+[91mNote: checking out '9133a8b56b1881901d48ccf9d4bde738a36ad2b9'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+[0m
+
+Grabbing busy at tag: R1-7-2
+
+[91mNote: checking out '7074c6e9ecdad0a68a3c4cd9a9f95bcc4ceb0e67'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+[0m
+
+Grabbing calc at tag: R3-7-3
+
+[91mNote: checking out '2a3ceff7afee73fd82a2c60d637611020cb65bca'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+[0m
+
+Grabbing caputRecorder at tag: R1-7-2
+
+[91mNote: checking out '06215864ccd6544ce4f89a7adf6fb5c0c609835b'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+[0m
+
+Grabbing iocStats at tag: 3.1.16
+
+[91mNote: checking out '4df9e87815f6a9432955a3ddb45fafa9fe4a4d40'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+[0m
+
+Grabbing ip at tag: R2-20-1
+
+[91mNote: checking out '21e3948e8c23de5d7cf6d53c8f9d1caa0aa13dd2'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+[0m
+
+Grabbing ipac at tag: 2.15
+
+[91mNote: checking out '12c50309e79cb305cb313a9892c853e07388167b'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+[0m
+
+Grabbing lua at tag: R2-0
+
+[91mNote: checking out '4235fb7922640578a21a651f00e68f4fa2b45e41'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+[0m
+
+Grabbing mca at tag: R7-8
+
+[91mNote: checking out 'c7d4facfa5d018fb7840f710d1d297aa1f200d68'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+[0m
+
+Grabbing measComp at tag: R2-3
+
+[91mNote: checking out '32101a10224eabab38934be3947269665b15d0c9'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+[0m
+
+Grabbing modbus at tag: R3-0
+
+[91mNote: checking out '0de4e191adc76b4000ee62f24ea1f9e2456759df'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+[0m
+
+Grabbing motor at tag: R7-1
+
+[91mNote: checking out '5189abaf68c0449751fdc4d6f50e1c42d000ca2e'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+[0m
+
+Grabbing optics at tag: R2-13-3
+
+[91mNote: checking out '91f2931870c5022a838157da956b961c79d6f8ad'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+[0m
+
+Grabbing sscan at tag: R2-11-3
+
+[91mNote: checking out 'ab8a36c218a6bd6089ad28463d29ae6d8369fedb'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+[0m
+
+Grabbing std at tag: R3-6
+
+[91mNote: checking out '74ac60bc75799b328faf5958be204faa16b5f610'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+[0m
+
+Grabbing StreamDevice at tag: 2.8.9
+
+[91mNote: checking out '880a399e4e92d6e52b33c40f21f564493d3ef7b0'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+[0m
+
+Grabbing vac at tag: R1-9
+
+[91mNote: checking out '65b16d598bc343462be212f9db1b88393b7438ba'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+[0m
+
+Grabbing xxx at tag: R6-1
+
+[91mNote: checking out 'e798cbdecc3d394436dd2f9b504d27f59f6b6d32'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+[0m
+
+Grabbing areaDetector at tag: R3-7
+
+[91mNote: checking out '3a011c4199e0899cdd73c63622257e658e24f8a9'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+[0m
+[91mSubmodule 'ADADSC' (https://github.com/areaDetector/ADADSC.git) registered for path 'ADADSC'
+[0m[91mSubmodule 'ADAndor' (https://github.com/areaDetector/ADAndor.git) registered for path 'ADAndor'
+[0m[91mSubmodule 'ADAndor3' (https://github.com/areaDetector/ADAndor3.git) registered for path 'ADAndor3'
+[0m[91mSubmodule 'ADAravis' (https://github.com/areaDetector/ADAravis) registered for path 'ADAravis'
+[0m[91mSubmodule 'ADBruker' (https://github.com/areaDetector/ADBruker.git) registered for path 'ADBruker'
+[0m[91mSubmodule 'ADCSimDetector' (https://github.com/areaDetector/ADCSimDetector.git) registered for path 'ADCSimDetector'
+[0m[91mSubmodule 'ADCameraLink' (https://github.com/areaDetector/ADCameraLink.git) registered for path 'ADCameraLink'
+[0m[91mSubmodule 'ADCompVision' (https://github.com/areaDetector/ADCompVision) registered for path 'ADCompVision'
+[0m[91mSubmodule 'ADCore' (https://github.com/areaDetector/ADCore.git) registered for path 'ADCore'
+[0m[91mSubmodule 'ADDexela' (https://github.com/areaDetector/ADDexela.git) registered for path 'ADDexela'
+[0m[91mSubmodule 'ADEiger' (https://github.com/areaDetector/ADEiger) registered for path 'ADEiger'
+[0m[91mSubmodule 'ADFastCCD' (https://github.com/areaDetector/ADFastCCD.git) registered for path 'ADFastCCD'
+[0m[91mSubmodule 'ADFireWireWin' (https://github.com/areaDetector/ADFireWireWin.git) registered for path 'ADFireWireWin'
+[0m[91mSubmodule 'ADGenICam' (https://github.com/areaDetector/ADGenICam) registered for path 'ADGenICam'
+[0m[91mSubmodule 'ADLambda' (https://github.com/areaDetector/ADLambda.git) registered for path 'ADLambda'
+[0m[91mSubmodule 'ADLightField' (https://github.com/areaDetector/ADLightField.git) registered for path 'ADLightField'
+[0m[91mSubmodule 'ADMMPAD' (https://github.com/areaDetector/ADMMPAD) registered for path 'ADMMPAD'
+[0m[91mSubmodule 'ADMerlin' (https://github.com/areaDetector/ADMerlin.git) registered for path 'ADMerlin'
+[0m[91mSubmodule 'ADMythen' (https://github.com/areaDetector/ADMythen.git) registered for path 'ADMythen'
+[0m[91mSubmodule 'ADPCO' (https://github.com/areaDetector/ADPCO.git) registered for path 'ADPCO'
+[0m[91mSubmodule 'ADPICam' (https://github.com/areaDetector/ADPICam.git) registered for path 'ADPICam'
+[0m[91mSubmodule 'ADPSL' (https://github.com/areaDetector/ADPSL.git) registered for path 'ADPSL'
+[0m[91mSubmodule 'ADPcoWin' (https://github.com/areaDetector/ADPcoWin) registered for path 'ADPcoWin'
+[0m[91mSubmodule 'ADPerkinElmer' (https://github.com/areaDetector/ADPerkinElmer.git) registered for path 'ADPerkinElmer'
+[0m[91mSubmodule 'ADPhotonII' (https://github.com/areaDetector/ADPhotonII) registered for path 'ADPhotonII'
+Submodule 'ADPilatus' (https://github.com/areaDetector/ADPilatus.git) registered for path 'ADPilatus'
+Submodule 'ADPixirad' (https://github.com/areaDetector/ADPixirad.git) registered for path 'ADPixirad'
+Submodule 'ADPluginBar' (https://github.com/areaDetector/ADPluginBar) registered for path 'ADPluginBar'
+[0m[91mSubmodule 'ADPluginEdge' (https://github.com/areaDetector/ADPluginEdge.git) registered for path 'ADPluginEdge'
+[0m[91mSubmodule 'ADPointGrey' (https://github.com/areaDetector/ADPointGrey.git) registered for path 'ADPointGrey'
+[0m[91mSubmodule 'ADProsilica' (https://github.com/areaDetector/ADProsilica.git) registered for path 'ADProsilica'
+[0m[91mSubmodule 'ADPvCam' (https://github.com/areaDetector/ADPvCam.git) registered for path 'ADPvCam'
+[0m[91mSubmodule 'ADQImaging' (https://github.com/areaDetector/ADQImaging.git) registered for path 'ADQImaging'
+[0m[91mSubmodule 'ADRIXSCam' (https://github.com/areaDetector/ADRIXSCam.git) registered for path 'ADRIXSCam'
+[0m[91mSubmodule 'ADRoper' (https://github.com/areaDetector/ADRoper.git) registered for path 'ADRoper'
+[0m[91mSubmodule 'ADSimDetector' (https://github.com/areaDetector/ADSimDetector.git) registered for path 'ADSimDetector'
+[0m[91mSubmodule 'ADSpinnaker' (https://github.com/areaDetector/ADSpinnaker.git) registered for path 'ADSpinnaker'
+[0m[91mSubmodule 'ADSupport' (https://github.com/areaDetector/ADSupport.git) registered for path 'ADSupport'
+[0m[91mSubmodule 'ADURL' (https://github.com/areaDetector/ADURL.git) registered for path 'ADURL'
+[0m[91mSubmodule 'ADViewers' (https://github.com/areaDetector/ADViewers.git) registered for path 'ADViewers'
+[0m[91mSubmodule 'ADVimba' (https://github.com/areaDetector/ADVimba) registered for path 'ADVimba'
+[0m[91mSubmodule 'ADmar345' (https://github.com/areaDetector/ADmar345.git) registered for path 'ADmar345'
+[0m[91mSubmodule 'ADmarCCD' (https://github.com/areaDetector/ADmarCCD.git) registered for path 'ADmarCCD'
+[0m[91mSubmodule 'ADnED' (https://github.com/areaDetector/ADnED.git) registered for path 'ADnED'
+[0m[91mSubmodule 'NDDriverStdArrays' (https://github.com/areaDetector/NDDriverStdArrays.git) registered for path 'NDDriverStdArrays'
+[0m[91mSubmodule 'aravisGigE' (https://github.com/areaDetector/aravisGigE.git) registered for path 'aravisGigE'
+[0m[91mSubmodule 'ffmpegServer' (https://github.com/areaDetector/ffmpegServer.git) registered for path 'ffmpegServer'
+[0m[91mSubmodule 'ffmpegViewer' (https://github.com/areaDetector/ffmpegViewer.git) registered for path 'ffmpegViewer'
+[0m[91mSubmodule 'firewireDCAM' (https://github.com/areaDetector/firewireDCAM.git) registered for path 'firewireDCAM'
+[0m[91mSubmodule 'pvaDriver' (https://github.com/areaDetector/pvaDriver.git) registered for path 'pvaDriver'
+Submodule 'specsAnalyser' (https://github.com/areaDetector/specsAnalyser.git) registered for path 'specsAnalyser'
+[0m[91mCloning into '/opt/synApps/support/areaDetector-R3-7/ADCore'...
+[0mSubmodule path 'ADCore': checked out '826cd668c833a69b17be6d168f7c479f06ee2bfd'
+[91mCloning into '/opt/synApps/support/areaDetector-R3-7/ADSupport'...
+[0mSubmodule path 'ADSupport': checked out '5c549858e9fd6407c83a353605ed2991f9b275da'
+[91mCloning into '/opt/synApps/support/areaDetector-R3-7/ADSimDetector'...
+[0mSubmodule path 'ADSimDetector': checked out '58e0140b3b4aa2f0e04985a0950bff190299a6a1'
+[91mSubmodule 'modules/motorAMCI' (https://github.com/epics-motor/motorAMCI.git) registered for path 'modules/motorAMCI'
+[0m[91mSubmodule 'modules/motorAcs' (https://github.com/epics-motor/motorAcs.git) registered for path 'modules/motorAcs'
+[0m[91mSubmodule 'modules/motorAcsTech80' (https://github.com/epics-motor/motorAcsTech80.git) registered for path 'modules/motorAcsTech80'
+[0m[91mSubmodule 'modules/motorAerotech' (https://github.com/epics-motor/motorAerotech.git) registered for path 'modules/motorAerotech'
+[0m[91mSubmodule 'modules/motorAttocube' (https://github.com/epics-motor/motorAttocube.git) registered for path 'modules/motorAttocube'
+[0m[91mSubmodule 'modules/motorDeltaTau' (https://github.com/epics-motor/motorDeltaTau.git) registered for path 'modules/motorDeltaTau'
+[0m[91mSubmodule 'modules/motorFaulhaber' (https://github.com/epics-motor/motorFaulhaber.git) registered for path 'modules/motorFaulhaber'
+[0m[91mSubmodule 'modules/motorHytec' (https://github.com/epics-motor/motorHytec.git) registered for path 'modules/motorHytec'
+[0m[91mSubmodule 'modules/motorIms' (https://github.com/epics-motor/motorIms.git) registered for path 'modules/motorIms'
+Submodule 'modules/motorKohzu' (https://github.com/epics-motor/motorKohzu.git) registered for path 'modules/motorKohzu'
+Submodule 'modules/motorMXmotor' (https://github.com/epics-motor/motorMXmotor.git) registered for path 'modules/motorMXmotor'
+Submodule 'modules/motorMclennan' (https://github.com/epics-motor/motorMclennan.git) registered for path 'modules/motorMclennan'
+Submodule 'modules/motorMicos' (https://github.com/epics-motor/motorMicos.git) registered for path 'modules/motorMicos'
+Submodule 'modules/motorMicroMo' (https://github.com/epics-motor/motorMicroMo.git) registered for path 'modules/motorMicroMo'
+[0m[91mSubmodule 'modules/motorMicronix' (https://github.com/epics-motor/motorMicronix.git) registered for path 'modules/motorMicronix'
+[0m[91mSubmodule 'modules/motorMotorSim' (https://github.com/epics-motor/motorMotorSim.git) registered for path 'modules/motorMotorSim'
+[0m[91mSubmodule 'modules/motorNPoint' (https://github.com/epics-motor/motorNPoint.git) registered for path 'modules/motorNPoint'
+[0m[91mSubmodule 'modules/motorNewFocus' (https://github.com/epics-motor/motorNewFocus.git) registered for path 'modules/motorNewFocus'
+Submodule 'modules/motorNewport' (https://github.com/epics-motor/motorNewport.git) registered for path 'modules/motorNewport'
+[0m[91mSubmodule 'modules/motorOms' (https://github.com/epics-motor/motorOms.git) registered for path 'modules/motorOms'
+Submodule 'modules/motorOmsAsyn' (https://github.com/epics-motor/motorOmsAsyn.git) registered for path 'modules/motorOmsAsyn'
+Submodule 'modules/motorOriel' (https://github.com/epics-motor/motorOriel.git) registered for path 'modules/motorOriel'
+Submodule 'modules/motorPI' (https://github.com/epics-motor/motorPI.git) registered for path 'modules/motorPI'
+[0m[91mSubmodule 'modules/motorPIGCS2' (https://github.com/epics-motor/motorPIGCS2.git) registered for path 'modules/motorPIGCS2'
+Submodule 'modules/motorParker' (https://github.com/epics-motor/motorParker.git) registered for path 'modules/motorParker'
+[0m[91mSubmodule 'modules/motorPhytron' (https://github.com/epics-motor/motorPhytron.git) registered for path 'modules/motorPhytron'
+Submodule 'modules/motorPiJena' (https://github.com/epics-motor/motorPiJena.git) registered for path 'modules/motorPiJena'
+[0m[91mSubmodule 'modules/motorScriptMotor' (https://github.com/epics-motor/motorScriptMotor.git) registered for path 'modules/motorScriptMotor'
+[0m[91mSubmodule 'modules/motorSmarAct' (https://github.com/epics-motor/motorSmarAct.git) registered for path 'modules/motorSmarAct'
+[0m[91mSubmodule 'modules/motorSmartMotor' (https://github.com/epics-motor/motorSmartMotor.git) registered for path 'modules/motorSmartMotor'
+[0m[91mSubmodule 'modules/motorThorLabs' (https://github.com/epics-motor/motorThorLabs.git) registered for path 'modules/motorThorLabs'
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorAMCI'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorAcs'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorAcsTech80'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorAerotech'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorAttocube'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorDeltaTau'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorFaulhaber'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorHytec'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorIms'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorKohzu'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorMXmotor'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorMclennan'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorMicos'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorMicroMo'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorMicronix'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorMotorSim'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorNPoint'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorNewFocus'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorNewport'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorOms'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorOmsAsyn'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorOriel'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorPI'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorPIGCS2'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorParker'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorPhytron'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorPiJena'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorScriptMotor'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorSmarAct'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorSmartMotor'...
+[0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorThorLabs'...
+[0mSubmodule path 'modules/motorAMCI': checked out 'cfd32e400cf9033219b514e0e874f5fa8c1ab31f'
+Submodule path 'modules/motorAcs': checked out '577fbcb73e4ba3736a2e7cf88c0df388dfc9dea5'
+Submodule path 'modules/motorAcsTech80': checked out 'c00e94140330148e49d8b84eefd62c3f998f57f3'
+Submodule path 'modules/motorAerotech': checked out 'd3f02c5f9a914e9566d1be20511951b98001826e'
+Submodule path 'modules/motorAttocube': checked out '8f1a9aa444bb9a58b3bf0105272105f545b83c60'
+Submodule path 'modules/motorDeltaTau': checked out '9b49dd5f232acae3af1faa2e6d3259c9faf57d8f'
+Submodule path 'modules/motorFaulhaber': checked out 'f7b018822ea7e3ccb7207cd5b75025bea8d7c4ae'
+Submodule path 'modules/motorHytec': checked out 'e5f3932222152e16c3dea8fef205b7f1724dbc42'
+Submodule path 'modules/motorIms': checked out '3f95ae51a382e05938105c42962eb1e41514d816'
+Submodule path 'modules/motorKohzu': checked out '5b72942e168d0109e82d332ef3e81a74d7db5194'
+Submodule path 'modules/motorMXmotor': checked out '5fa12214260d0c13a297340f8f4be109c4005b69'
+Submodule path 'modules/motorMclennan': checked out '89fe35d107c3946089493c1b8d11311ba0122e42'
+Submodule path 'modules/motorMicos': checked out '1f341b271d29d6711457c27c0ebb4449d43eac48'
+Submodule path 'modules/motorMicroMo': checked out 'ba3e575aec69ca764b436f8a0b86449bc56920af'
+Submodule path 'modules/motorMicronix': checked out '59a7f06fbf4c70dd5af439f6bec6d45fe4c4335a'
+Submodule path 'modules/motorMotorSim': checked out '20bd29c8eaee6ccd236fec1d542472e0e5dc643f'
+Submodule path 'modules/motorNPoint': checked out '4d2f297414e62eceb267541a975694dbad1374b5'
+Submodule path 'modules/motorNewFocus': checked out '1ec6839b0eb100f1e071cbf75585d7b35cf38a77'
+Submodule path 'modules/motorNewport': checked out '374a93708602ba25ad2716f2fc009dff73dfb4a6'
+Submodule path 'modules/motorOms': checked out '85cde67e5c785d1dfc1f46c35105f5ef796b579e'
+Submodule path 'modules/motorOmsAsyn': checked out '1b4c794c24c8794b4cb6efb07c024fa9c1bb7d76'
+Submodule path 'modules/motorOriel': checked out '6f151eabf53e9e5f9f0c51dff662147524beb5e2'
+Submodule path 'modules/motorPI': checked out '13c2b1c75b3f49090bcc718c04e2c364c650ee44'
+Submodule path 'modules/motorPIGCS2': checked out '59b31e0cec8eb0db037b13f1f2936d0fcd5ae059'
+Submodule path 'modules/motorParker': checked out '1f978b4fd8ae50608c6b2d71ecb8f06c78d98d81'
+Submodule path 'modules/motorPhytron': checked out '4c2140414e54d0565b5afd43b2be1ca3bf7b3601'
+Submodule path 'modules/motorPiJena': checked out 'b1c586075f31cdce13085c7fcabadedcc22a95c1'
+Submodule path 'modules/motorScriptMotor': checked out '495b57a61c196c1440c7ae6b228984d5e6e9ee76'
+Submodule path 'modules/motorSmarAct': checked out '66015236bd1bf44176bf6dc5cdb99761b43dee31'
+Submodule path 'modules/motorSmartMotor': checked out 'ee30ba9cc44761a0cd28e22c9b48903368417096'
+Submodule path 'modules/motorThorLabs': checked out '0a9ec8f1184f0b37e12f79b2746303f9fbbbe9c2'
+[91m--2019-09-26 05:10:11--  http://www-csr.bessy.de/control/SoftDist/sequencer/releases/seq-2.2.6.tar.gz
+[0m[91mResolving www-csr.bessy.de (www-csr.bessy.de)... [0m[91m193.149.12.250
+Connecting to www-csr.bessy.de (www-csr.bessy.de)|193.149.12.250|:80... [0m[91mconnected.
+HTTP request sent, awaiting response... [0m[91m302 Found
+Location: https://www-csr.bessy.de/control/SoftDist/sequencer/releases/seq-2.2.6.tar.gz [following]
+--2019-09-26 05:10:11--  https://www-csr.bessy.de/control/SoftDist/sequencer/releases/seq-2.2.6.tar.gz
+Connecting to www-csr.bessy.de (www-csr.bessy.de)|193.149.12.250|:443... [0m[91mconnected.
+[0m[91mHTTP request sent, awaiting response... [0m[91m200 OK
+Length: 306984 (300K) [application/x-gzip]
+Saving to: 'seq-2.2.6.tar.gz'
+[0m[91m
+     0K .......... ......[0m[91m.... .......... ..[0m[91m........ ........[0m[91m.. 16%  184K 1s
+    50K .......... ....[0m[91m...... ..........[0m[91m .......... ......[0m[91m.... 33% 2.73M 1s
+   100K .......... ..[0m[91m........ ........[0m[91m.. .......... ....[0m[91m...... 50%  408K 0s
+   150K ..........[0m[91m .......... ......[0m[91m.... .......... ..[0m[91m........ 66% 3.71M 0s
+   200K ........[0m[91m.. .......... ....[0m[91m...... ..........[0m[91m .......... 83%  401K 0s
+   250K ......[0m[91m.... .......... ..[0m[91m........ ........[0m[91m.. ......... 100% 4.81M=0.6s
+
+2019-09-26 05:10:12 (535 KB/s) - 'seq-2.2.6.tar.gz' saved [306984/306984]
+
+[0m[91mconfigure/CONFIG:18: /opt/epics-base-7.0.3/configure/CONFIG: No such file or directory
+[0m[91mconfigure/RULES_TOP:2: /opt/epics-base-7.0.3/configure/RULES_TOP: No such file or directory
+[0m[91mmake: *** No rule to make target '/opt/epics-base-7.0.3/configure/RULES_TOP'.  Stop.
+[0mThe command '/bin/sh -c bash assemble_synApps.sh' returned a non-zero code: 2
