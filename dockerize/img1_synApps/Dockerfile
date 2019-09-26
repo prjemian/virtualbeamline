@@ -77,4 +77,6 @@ RUN ls -lAFgh
 RUN make clean release
 # archive the template IOC, for making new XXX IOCs
 RUN tar czf ../../xxx-R6-1.tar.gz xxx-R6-1
-RUN all
+RUN make all
+
+# TODO: remove unnecessary bulk

@@ -30,6 +30,4 @@ WORKDIR ${EPICS_ROOT}
 #RUN ls -lAFg
 RUN make -j4 CFLAGS="-fPIC" CXXFLAGS="-fPIC"
 
-# build: docker build -t prjemian/epics:epics-base-7.0.3 ./ 2>&1 | tee build-log.txt
-# run: docker run -it --rm --net=virtualbeam prjemian/epics:epics-base-7.0.3 /bin/bash
-# pushd: docker push prjemian/epics:epics-base-7.0.3
+# TODO: remove unnecessary bulk
