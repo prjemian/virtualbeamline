@@ -66,10 +66,8 @@ RUN bash assemble_synApps.sh
 # RUN mv synApps  synApps-6.1
 # RUN ln -s synApps-6.1  synApps
 
-# WORKDIR ${SUPPORT}
-# RUN ls -lAFgh
+WORKDIR ${SUPPORT}
+RUN ls -lAFgh
 # # edit a few things before build
 # # done editing
-# RUN make release
-# RUN make
-# # RUN make install
+RUN make clean release all
