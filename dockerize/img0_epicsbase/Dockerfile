@@ -11,8 +11,8 @@ RUN apt update  -y && \
     apt install -y  build-essential libreadline-dev wget
 
 # Get the latest version of EPICS
-ENV EPICS_ROOT="/opt/epics-base"
 ENV EPICS_HOST_ARCH=linux-x86_64
+ENV EPICS_ROOT="/opt/epics-base"
 ENV PATH="${PATH}:${EPICS_ROOT}/bin/${EPICS_HOST_ARCH}"
 
 #RUN echo EPICS_HOST_ARCH=${EPICS_HOST_ARCH}
