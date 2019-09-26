@@ -1,7 +1,7 @@
 
 ORG=prjemian
 REPO=epics
-TAG=synApps-6.1
+TAG=epics-base-7.0.3
 LOGFILE=build-log.txt
 NET=virtualbeam
 
