@@ -1,133 +1,372 @@
-Sending build context to Docker daemon   5.12kB
+Sending build context to Docker daemon  6.144kB
 Step 1/32 : FROM prjemian/epics:epics-base-7.0.3
  ---> 00580060cd21
 Step 2/32 : LABEL version="0.0.1"       maintainer="prjemian <prjemian@gmail.com>"       lastupdate="2019-09-25"
- ---> Using cache
- ---> a1cc0179dcd7
+ ---> Running in 9cdf9d8382ee
+Removing intermediate container 9cdf9d8382ee
+ ---> 9f5bfde0937d
 Step 3/32 : USER  root
- ---> Using cache
- ---> 4942309ad351
+ ---> Running in 053b99f2aa76
+Removing intermediate container 053b99f2aa76
+ ---> 1d3104fca283
 Step 4/32 : RUN     apt update  -y &&     apt upgrade -y &&     apt install -y         git        libusb-dev        libusb-1.0-0-dev        re2c        screen        &&     rm -rf /var/lib/apt/lists/*
- ---> Using cache
- ---> 91ecbea2e329
+ ---> Running in 8b9cb2e15a6f
+[91m
+[0m[91mWARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+[0mGet:1 http://security.ubuntu.com/ubuntu bionic-security InRelease [88.7 kB]
+Hit:2 http://archive.ubuntu.com/ubuntu bionic InRelease
+Get:3 http://archive.ubuntu.com/ubuntu bionic-updates InRelease [88.7 kB]
+Get:4 http://archive.ubuntu.com/ubuntu bionic-backports InRelease [74.6 kB]
+Fetched 252 kB in 2s (162 kB/s)
+Reading package lists...
+Building dependency tree...
+Reading state information...
+All packages are up to date.
+[91m
+[0m[91mWARNING: [0m[91mapt[0m[91m [0m[91mdoes not have a stable CLI interface. [0m[91mUse with caution in scripts.[0m[91m
+[0m[91m
+[0mReading package lists...
+Building dependency tree...
+Reading state information...
+Calculating upgrade...
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+[91m
+[0m[91mWARNING: [0m[91mapt[0m[91m [0m[91mdoes not have a stable CLI interface. [0m[91mUse with caution in scripts.[0m[91m
+[0m[91m
+[0mReading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  git-man krb5-locales less libbsd0 libcurl3-gnutls libedit2 liberror-perl
+  libexpat1 libgssapi-krb5-2 libk5crypto3 libkeyutils1 libkrb5-3
+  libkrb5support0 libnghttp2-14 librtmp1 libssl1.0.0 libusb-0.1-4 libusb-1.0-0
+  libusb-1.0-doc libutempter0 libx11-6 libx11-data libxau6 libxcb1 libxdmcp6
+  libxext6 libxmuu1 multiarch-support openssh-client xauth
+Suggested packages:
+  gettext-base git-daemon-run | git-daemon-sysvinit git-doc git-el git-email
+  git-gui gitk gitweb git-cvs git-mediawiki git-svn krb5-doc krb5-user
+  keychain libpam-ssh monkeysphere ssh-askpass byobu | screenie | iselect
+  ncurses-term
+The following NEW packages will be installed:
+  git git-man krb5-locales less libbsd0 libcurl3-gnutls libedit2 liberror-perl
+  libexpat1 libgssapi-krb5-2 libk5crypto3 libkeyutils1 libkrb5-3
+  libkrb5support0 libnghttp2-14 librtmp1 libssl1.0.0 libusb-0.1-4 libusb-1.0-0
+  libusb-1.0-0-dev libusb-1.0-doc libusb-dev libutempter0 libx11-6 libx11-data
+  libxau6 libxcb1 libxdmcp6 libxext6 libxmuu1 multiarch-support openssh-client
+  re2c screen xauth
+0 upgraded, 35 newly installed, 0 to remove and 0 not upgraded.
+Need to get 9614 kB of archives.
+After this operation, 53.4 MB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu bionic/main amd64 multiarch-support amd64 2.27-3ubuntu1 [6916 B]
+Get:2 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxau6 amd64 1:1.0.8-1 [8376 B]
+Get:3 http://archive.ubuntu.com/ubuntu bionic/main amd64 libbsd0 amd64 0.8.7-1 [41.5 kB]
+Get:4 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxdmcp6 amd64 1:1.1.2-3 [10.7 kB]
+Get:5 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libxcb1 amd64 1.13-2~ubuntu18.04 [45.5 kB]
+Get:6 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libx11-data all 2:1.6.4-3ubuntu0.2 [113 kB]
+Get:7 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libx11-6 amd64 2:1.6.4-3ubuntu0.2 [569 kB]
+Get:8 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxext6 amd64 2:1.3.3-1 [29.4 kB]
+Get:9 http://archive.ubuntu.com/ubuntu bionic/main amd64 less amd64 487-0.1 [112 kB]
+Get:10 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libexpat1 amd64 2.2.5-3ubuntu0.2 [80.5 kB]
+Get:11 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 krb5-locales all 1.16-2ubuntu0.1 [13.5 kB]
+Get:12 http://archive.ubuntu.com/ubuntu bionic/main amd64 libedit2 amd64 3.1-20170329-1 [76.9 kB]
+Get:13 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libkrb5support0 amd64 1.16-2ubuntu0.1 [30.9 kB]
+Get:14 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libk5crypto3 amd64 1.16-2ubuntu0.1 [85.6 kB]
+Get:15 http://archive.ubuntu.com/ubuntu bionic/main amd64 libkeyutils1 amd64 1.5.9-9.2ubuntu2 [8720 B]
+Get:16 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libkrb5-3 amd64 1.16-2ubuntu0.1 [279 kB]
+Get:17 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libgssapi-krb5-2 amd64 1.16-2ubuntu0.1 [122 kB]
+Get:18 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libssl1.0.0 amd64 1.0.2n-1ubuntu5.3 [1088 kB]
+Get:19 http://archive.ubuntu.com/ubuntu bionic/main amd64 libusb-1.0-0 amd64 2:1.0.21-2 [43.3 kB]
+Get:20 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxmuu1 amd64 2:1.1.2-2 [9674 B]
+Get:21 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 openssh-client amd64 1:7.6p1-4ubuntu0.3 [614 kB]
+Get:22 http://archive.ubuntu.com/ubuntu bionic/main amd64 xauth amd64 1:1.0.10-1 [24.6 kB]
+Get:23 http://archive.ubuntu.com/ubuntu bionic/main amd64 libnghttp2-14 amd64 1.30.0-1ubuntu1 [77.8 kB]
+Get:24 http://archive.ubuntu.com/ubuntu bionic/main amd64 librtmp1 amd64 2.4+20151223.gitfa8646d.1-1 [54.2 kB]
+Get:25 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libcurl3-gnutls amd64 7.58.0-2ubuntu3.8 [213 kB]
+Get:26 http://archive.ubuntu.com/ubuntu bionic/main amd64 liberror-perl all 0.17025-1 [22.8 kB]
+Get:27 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 git-man all 1:2.17.1-1ubuntu0.4 [803 kB]
+Get:28 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 git amd64 1:2.17.1-1ubuntu0.4 [3907 kB]
+Get:29 http://archive.ubuntu.com/ubuntu bionic/main amd64 libusb-0.1-4 amd64 2:0.1.12-31 [17.1 kB]
+Get:30 http://archive.ubuntu.com/ubuntu bionic/main amd64 libusb-1.0-0-dev amd64 2:1.0.21-2 [60.5 kB]
+Get:31 http://archive.ubuntu.com/ubuntu bionic/main amd64 libusb-1.0-doc all 2:1.0.21-2 [170 kB]
+Get:32 http://archive.ubuntu.com/ubuntu bionic/main amd64 libusb-dev amd64 2:0.1.12-31 [30.2 kB]
+Get:33 http://archive.ubuntu.com/ubuntu bionic/main amd64 libutempter0 amd64 1.1.6-3 [7898 B]
+Get:34 http://archive.ubuntu.com/ubuntu bionic/main amd64 re2c amd64 1.0.1-1 [274 kB]
+Get:35 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 screen amd64 4.6.2-1ubuntu1 [564 kB]
+[91mdebconf: delaying package configuration, since apt-utils is not installed
+[0mFetched 9614 kB in 28s (348 kB/s)
+Selecting previously unselected package multiarch-support.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 12487 files and directories currently installed.)
+Preparing to unpack .../multiarch-support_2.27-3ubuntu1_amd64.deb ...
+Unpacking multiarch-support (2.27-3ubuntu1) ...
+Setting up multiarch-support (2.27-3ubuntu1) ...
+Selecting previously unselected package libxau6:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 12490 files and directories currently installed.)
+Preparing to unpack .../00-libxau6_1%3a1.0.8-1_amd64.deb ...
+Unpacking libxau6:amd64 (1:1.0.8-1) ...
+Selecting previously unselected package libbsd0:amd64.
+Preparing to unpack .../01-libbsd0_0.8.7-1_amd64.deb ...
+Unpacking libbsd0:amd64 (0.8.7-1) ...
+Selecting previously unselected package libxdmcp6:amd64.
+Preparing to unpack .../02-libxdmcp6_1%3a1.1.2-3_amd64.deb ...
+Unpacking libxdmcp6:amd64 (1:1.1.2-3) ...
+Selecting previously unselected package libxcb1:amd64.
+Preparing to unpack .../03-libxcb1_1.13-2~ubuntu18.04_amd64.deb ...
+Unpacking libxcb1:amd64 (1.13-2~ubuntu18.04) ...
+Selecting previously unselected package libx11-data.
+Preparing to unpack .../04-libx11-data_2%3a1.6.4-3ubuntu0.2_all.deb ...
+Unpacking libx11-data (2:1.6.4-3ubuntu0.2) ...
+Selecting previously unselected package libx11-6:amd64.
+Preparing to unpack .../05-libx11-6_2%3a1.6.4-3ubuntu0.2_amd64.deb ...
+Unpacking libx11-6:amd64 (2:1.6.4-3ubuntu0.2) ...
+Selecting previously unselected package libxext6:amd64.
+Preparing to unpack .../06-libxext6_2%3a1.3.3-1_amd64.deb ...
+Unpacking libxext6:amd64 (2:1.3.3-1) ...
+Selecting previously unselected package less.
+Preparing to unpack .../07-less_487-0.1_amd64.deb ...
+Unpacking less (487-0.1) ...
+Selecting previously unselected package libexpat1:amd64.
+Preparing to unpack .../08-libexpat1_2.2.5-3ubuntu0.2_amd64.deb ...
+Unpacking libexpat1:amd64 (2.2.5-3ubuntu0.2) ...
+Selecting previously unselected package krb5-locales.
+Preparing to unpack .../09-krb5-locales_1.16-2ubuntu0.1_all.deb ...
+Unpacking krb5-locales (1.16-2ubuntu0.1) ...
+Selecting previously unselected package libedit2:amd64.
+Preparing to unpack .../10-libedit2_3.1-20170329-1_amd64.deb ...
+Unpacking libedit2:amd64 (3.1-20170329-1) ...
+Selecting previously unselected package libkrb5support0:amd64.
+Preparing to unpack .../11-libkrb5support0_1.16-2ubuntu0.1_amd64.deb ...
+Unpacking libkrb5support0:amd64 (1.16-2ubuntu0.1) ...
+Selecting previously unselected package libk5crypto3:amd64.
+Preparing to unpack .../12-libk5crypto3_1.16-2ubuntu0.1_amd64.deb ...
+Unpacking libk5crypto3:amd64 (1.16-2ubuntu0.1) ...
+Selecting previously unselected package libkeyutils1:amd64.
+Preparing to unpack .../13-libkeyutils1_1.5.9-9.2ubuntu2_amd64.deb ...
+Unpacking libkeyutils1:amd64 (1.5.9-9.2ubuntu2) ...
+Selecting previously unselected package libkrb5-3:amd64.
+Preparing to unpack .../14-libkrb5-3_1.16-2ubuntu0.1_amd64.deb ...
+Unpacking libkrb5-3:amd64 (1.16-2ubuntu0.1) ...
+Selecting previously unselected package libgssapi-krb5-2:amd64.
+Preparing to unpack .../15-libgssapi-krb5-2_1.16-2ubuntu0.1_amd64.deb ...
+Unpacking libgssapi-krb5-2:amd64 (1.16-2ubuntu0.1) ...
+Selecting previously unselected package libssl1.0.0:amd64.
+Preparing to unpack .../16-libssl1.0.0_1.0.2n-1ubuntu5.3_amd64.deb ...
+Unpacking libssl1.0.0:amd64 (1.0.2n-1ubuntu5.3) ...
+Selecting previously unselected package libusb-1.0-0:amd64.
+Preparing to unpack .../17-libusb-1.0-0_2%3a1.0.21-2_amd64.deb ...
+Unpacking libusb-1.0-0:amd64 (2:1.0.21-2) ...
+Selecting previously unselected package libxmuu1:amd64.
+Preparing to unpack .../18-libxmuu1_2%3a1.1.2-2_amd64.deb ...
+Unpacking libxmuu1:amd64 (2:1.1.2-2) ...
+Selecting previously unselected package openssh-client.
+Preparing to unpack .../19-openssh-client_1%3a7.6p1-4ubuntu0.3_amd64.deb ...
+Unpacking openssh-client (1:7.6p1-4ubuntu0.3) ...
+Selecting previously unselected package xauth.
+Preparing to unpack .../20-xauth_1%3a1.0.10-1_amd64.deb ...
+Unpacking xauth (1:1.0.10-1) ...
+Selecting previously unselected package libnghttp2-14:amd64.
+Preparing to unpack .../21-libnghttp2-14_1.30.0-1ubuntu1_amd64.deb ...
+Unpacking libnghttp2-14:amd64 (1.30.0-1ubuntu1) ...
+Selecting previously unselected package librtmp1:amd64.
+Preparing to unpack .../22-librtmp1_2.4+20151223.gitfa8646d.1-1_amd64.deb ...
+Unpacking librtmp1:amd64 (2.4+20151223.gitfa8646d.1-1) ...
+Selecting previously unselected package libcurl3-gnutls:amd64.
+Preparing to unpack .../23-libcurl3-gnutls_7.58.0-2ubuntu3.8_amd64.deb ...
+Unpacking libcurl3-gnutls:amd64 (7.58.0-2ubuntu3.8) ...
+Selecting previously unselected package liberror-perl.
+Preparing to unpack .../24-liberror-perl_0.17025-1_all.deb ...
+Unpacking liberror-perl (0.17025-1) ...
+Selecting previously unselected package git-man.
+Preparing to unpack .../25-git-man_1%3a2.17.1-1ubuntu0.4_all.deb ...
+Unpacking git-man (1:2.17.1-1ubuntu0.4) ...
+Selecting previously unselected package git.
+Preparing to unpack .../26-git_1%3a2.17.1-1ubuntu0.4_amd64.deb ...
+Unpacking git (1:2.17.1-1ubuntu0.4) ...
+Selecting previously unselected package libusb-0.1-4:amd64.
+Preparing to unpack .../27-libusb-0.1-4_2%3a0.1.12-31_amd64.deb ...
+Unpacking libusb-0.1-4:amd64 (2:0.1.12-31) ...
+Selecting previously unselected package libusb-1.0-0-dev:amd64.
+Preparing to unpack .../28-libusb-1.0-0-dev_2%3a1.0.21-2_amd64.deb ...
+Unpacking libusb-1.0-0-dev:amd64 (2:1.0.21-2) ...
+Selecting previously unselected package libusb-1.0-doc.
+Preparing to unpack .../29-libusb-1.0-doc_2%3a1.0.21-2_all.deb ...
+Unpacking libusb-1.0-doc (2:1.0.21-2) ...
+Selecting previously unselected package libusb-dev.
+Preparing to unpack .../30-libusb-dev_2%3a0.1.12-31_amd64.deb ...
+Unpacking libusb-dev (2:0.1.12-31) ...
+Selecting previously unselected package libutempter0:amd64.
+Preparing to unpack .../31-libutempter0_1.1.6-3_amd64.deb ...
+Unpacking libutempter0:amd64 (1.1.6-3) ...
+Selecting previously unselected package re2c.
+Preparing to unpack .../32-re2c_1.0.1-1_amd64.deb ...
+Unpacking re2c (1.0.1-1) ...
+Selecting previously unselected package screen.
+Preparing to unpack .../33-screen_4.6.2-1ubuntu1_amd64.deb ...
+Unpacking screen (4.6.2-1ubuntu1) ...
+Setting up libedit2:amd64 (3.1-20170329-1) ...
+Setting up git-man (1:2.17.1-1ubuntu0.4) ...
+Setting up libexpat1:amd64 (2.2.5-3ubuntu0.2) ...
+Setting up less (487-0.1) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+Setting up libssl1.0.0:amd64 (1.0.2n-1ubuntu5.3) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+Setting up libnghttp2-14:amd64 (1.30.0-1ubuntu1) ...
+Setting up liberror-perl (0.17025-1) ...
+Setting up libusb-1.0-doc (2:1.0.21-2) ...
+Setting up re2c (1.0.1-1) ...
+Setting up librtmp1:amd64 (2.4+20151223.gitfa8646d.1-1) ...
+Setting up libbsd0:amd64 (0.8.7-1) ...
+Setting up libkrb5support0:amd64 (1.16-2ubuntu0.1) ...
+Setting up libutempter0:amd64 (1.1.6-3) ...
+Setting up libusb-1.0-0:amd64 (2:1.0.21-2) ...
+Setting up krb5-locales (1.16-2ubuntu0.1) ...
+Setting up libusb-1.0-0-dev:amd64 (2:1.0.21-2) ...
+Setting up screen (4.6.2-1ubuntu1) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+Setting up libxdmcp6:amd64 (1:1.1.2-3) ...
+Setting up libkeyutils1:amd64 (1.5.9-9.2ubuntu2) ...
+Setting up libusb-0.1-4:amd64 (2:0.1.12-31) ...
+Setting up libx11-data (2:1.6.4-3ubuntu0.2) ...
+Setting up libxau6:amd64 (1:1.0.8-1) ...
+Setting up libk5crypto3:amd64 (1.16-2ubuntu0.1) ...
+Setting up libusb-dev (2:0.1.12-31) ...
+Setting up libkrb5-3:amd64 (1.16-2ubuntu0.1) ...
+Setting up libxcb1:amd64 (1.13-2~ubuntu18.04) ...
+Setting up libx11-6:amd64 (2:1.6.4-3ubuntu0.2) ...
+Setting up libxmuu1:amd64 (2:1.1.2-2) ...
+Setting up libgssapi-krb5-2:amd64 (1.16-2ubuntu0.1) ...
+Setting up openssh-client (1:7.6p1-4ubuntu0.3) ...
+Setting up libxext6:amd64 (2:1.3.3-1) ...
+Setting up libcurl3-gnutls:amd64 (7.58.0-2ubuntu3.8) ...
+Setting up xauth (1:1.0.10-1) ...
+Setting up git (1:2.17.1-1ubuntu0.4) ...
+Processing triggers for libc-bin (2.27-3ubuntu1) ...
+Removing intermediate container 8b9cb2e15a6f
+ ---> 81d86794d519
 Step 5/32 : ENV EPICS_HOST_ARCH=linux-x86_64
- ---> Running in 47d496014051
-Removing intermediate container 47d496014051
- ---> 1b77922ec2e3
-Step 6/32 : ENV EPICS_ROOT="/opt/epics-base-7.0.3"
- ---> Running in 91931ebc4336
-Removing intermediate container 91931ebc4336
- ---> b3cdd4755604
+ ---> Running in 6eca329331b7
+Removing intermediate container 6eca329331b7
+ ---> f06b5fd77ff7
+Step 6/32 : ENV EPICS_ROOT="/opt/epics-base"
+ ---> Running in e016ae719159
+Removing intermediate container e016ae719159
+ ---> b71de8392ede
 Step 7/32 : ENV PATH="${PATH}:${EPICS_ROOT}/bin/${EPICS_HOST_ARCH}"
- ---> Running in 55f6f62ffb6e
-Removing intermediate container 55f6f62ffb6e
- ---> ea7881003c5f
+ ---> Running in 90f5ee902627
+Removing intermediate container 90f5ee902627
+ ---> 8c51f63b7721
 Step 8/32 : ENV SYNAPPS_PARENT="/opt"
- ---> Running in 30a57b8d40d6
-Removing intermediate container 30a57b8d40d6
- ---> 726197e16285
+ ---> Running in e84741f81c8f
+Removing intermediate container e84741f81c8f
+ ---> c4684236b400
 Step 9/32 : ENV SUPPORT="${SYNAPPS_PARENT}/synApps/support"
- ---> Running in c1e4c8ead342
-Removing intermediate container c1e4c8ead342
- ---> f05369b374e2
+ ---> Running in f79cc27643f3
+Removing intermediate container f79cc27643f3
+ ---> 903308cf2fe7
 Step 10/32 : ENV PATH="${PATH}:${SUPPORT}/utils"
- ---> Running in dd47e7712f4c
-Removing intermediate container dd47e7712f4c
- ---> 7f9330f31b9c
+ ---> Running in e01e8afdbc86
+Removing intermediate container e01e8afdbc86
+ ---> 5c15339f6d71
 Step 11/32 : WORKDIR ${SYNAPPS_PARENT}
- ---> Running in 71dafa0ee137
-Removing intermediate container 71dafa0ee137
- ---> 58a72c95d19b
+ ---> Running in 7ce14cdc3b07
+Removing intermediate container 7ce14cdc3b07
+ ---> 542410c6cd4a
 Step 12/32 : ENV HASH=cc5adba5b8848c9cb98ab96768d668ae927d8859
- ---> Running in a6d47fce0d40
-Removing intermediate container a6d47fce0d40
- ---> b12817c38373
+ ---> Running in 58e22fb0765d
+Removing intermediate container 58e22fb0765d
+ ---> d2fc1ce3fdb3
 Step 13/32 : RUN wget https://raw.githubusercontent.com/EPICS-synApps/support/${HASH}/assemble_synApps.sh
- ---> Running in f0862c67ddfa
-[91m--2019-09-26 05:08:05--  https://raw.githubusercontent.com/EPICS-synApps/support/cc5adba5b8848c9cb98ab96768d668ae927d8859/assemble_synApps.sh
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... [0m[91m199.232.4.133
+ ---> Running in d1a2621ecedf
+[91m--2019-09-26 05:48:28--  https://raw.githubusercontent.com/EPICS-synApps/support/cc5adba5b8848c9cb98ab96768d668ae927d8859/assemble_synApps.sh
+[0m[91mResolving raw.githubusercontent.com (raw.githubusercontent.com)... [0m[91m199.232.4.133
 Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|199.232.4.133|:443... [0m[91mconnected.
 [0m[91mHTTP request sent, awaiting response... [0m[91m200 OK
 Length: 11872 (12K) [text/plain]
 Saving to: 'assemble_synApps.sh'
 
-     0K .[0m[91m.....[0m[91m.... .                                          100% 4.89M=0.002s
+     0K .......... .                                          100% 2.68M=0.004s
 
-2019-09-26 05:08:06 (4.89 MB/s) - 'assemble_synApps.sh' saved [11872/11872]
+2019-09-26 05:48:28 (2.68 MB/s) - 'assemble_synApps.sh' saved [11872/11872]
 
-[0mRemoving intermediate container f0862c67ddfa
- ---> 3c07f088c063
-Step 14/32 : RUN sed -i s='/APSshare/epics/base-3.15.6'='/opt/epics-base-7.0.3'=g assemble_synApps.sh
- ---> Running in 2bcc8e8fd0b8
-Removing intermediate container 2bcc8e8fd0b8
- ---> 6339c7adb67b
+[0mRemoving intermediate container d1a2621ecedf
+ ---> c56ef6c8926e
+Step 14/32 : RUN sed -i s='/APSshare/epics/base-3.15.6'='/opt/epics-base'=g assemble_synApps.sh
+ ---> Running in af9f3d27ed96
+Removing intermediate container af9f3d27ed96
+ ---> d6154ef59633
 Step 15/32 : RUN sed -i s/'ALLENBRADLEY='/'#ALLENBRADLEY='/g assemble_synApps.sh
- ---> Running in 488b177d3829
-Removing intermediate container 488b177d3829
- ---> d22361bd2d4d
+ ---> Running in 514aa8607dc3
+Removing intermediate container 514aa8607dc3
+ ---> 67785aef1136
 Step 16/32 : RUN sed -i s/'CAMAC='/'#CAMAC='/g assemble_synApps.sh
- ---> Running in 464701fa7cc5
-Removing intermediate container 464701fa7cc5
- ---> 2f08047c6502
+ ---> Running in 83fda252aebf
+Removing intermediate container 83fda252aebf
+ ---> 63fc1034ba5d
 Step 17/32 : RUN sed -i s/'DAC128V='/'#DAC128V='/g assemble_synApps.sh
- ---> Running in 1d5440d9ebcc
-Removing intermediate container 1d5440d9ebcc
- ---> b57aac51fdf5
+ ---> Running in 3ddba02f9c8e
+Removing intermediate container 3ddba02f9c8e
+ ---> fee74b202efc
 Step 18/32 : RUN sed -i s/'DELAYGEN='/'#DELAYGEN='/g assemble_synApps.sh
- ---> Running in b50b4657e4f8
-Removing intermediate container b50b4657e4f8
- ---> 24164ff15148
+ ---> Running in 0e04a7fc0a9f
+Removing intermediate container 0e04a7fc0a9f
+ ---> 5983f5be0625
 Step 19/32 : RUN sed -i s/'DXP='/'#DXP='/g assemble_synApps.sh
- ---> Running in 8b746a072831
-Removing intermediate container 8b746a072831
- ---> c4a077b44b94
+ ---> Running in 8706417f1d40
+Removing intermediate container 8706417f1d40
+ ---> ea1b2814cb93
 Step 20/32 : RUN sed -i s/'DXPSITORO='/'#DXPSITORO='/g assemble_synApps.sh
- ---> Running in bc4fae23523e
-Removing intermediate container bc4fae23523e
- ---> c426abc93356
+ ---> Running in fa0f67d52675
+Removing intermediate container fa0f67d52675
+ ---> 428a5a459f8a
 Step 21/32 : RUN sed -i s/'IP330='/'#IP330='/g assemble_synApps.sh
- ---> Running in 804546365e54
-Removing intermediate container 804546365e54
- ---> 2e4a119bd5bc
+ ---> Running in 6d8d62e5927e
+Removing intermediate container 6d8d62e5927e
+ ---> a9ca2ebb86ba
 Step 22/32 : RUN sed -i s/'IPUNIDIG='/'#IPUNIDIG='/g assemble_synApps.sh
- ---> Running in 75bf06b5355e
-Removing intermediate container 75bf06b5355e
- ---> 3a2aa5d53dfc
+ ---> Running in f27df62c2970
+Removing intermediate container f27df62c2970
+ ---> 5b9bebb5539f
 Step 23/32 : RUN sed -i s/'LOVE='/'#LOVE='/g assemble_synApps.sh
- ---> Running in 21e3e2cee0c3
-Removing intermediate container 21e3e2cee0c3
- ---> d50f494a38a5
+ ---> Running in be184b82fad6
+Removing intermediate container be184b82fad6
+ ---> bb1b7c5a3de3
 Step 24/32 : RUN sed -i s/'QUADEM='/'#QUADEM='/g assemble_synApps.sh
- ---> Running in 70223cf69a3f
-Removing intermediate container 70223cf69a3f
- ---> 6456bc38b913
+ ---> Running in 02299d7d4116
+Removing intermediate container 02299d7d4116
+ ---> ca299aaf93e1
 Step 25/32 : RUN sed -i s/'SOFTGLUE='/'#SOFTGLUE='/g assemble_synApps.sh
- ---> Running in a9af59977b88
-Removing intermediate container a9af59977b88
- ---> 6d2b4c24dcf8
+ ---> Running in a3e56c9c71e9
+Removing intermediate container a3e56c9c71e9
+ ---> ca5394336013
 Step 26/32 : RUN sed -i s/'SOFTGLUEZYNQ='/'#SOFTGLUEZYNQ='/g assemble_synApps.sh
- ---> Running in 7e70ee13ac5d
-Removing intermediate container 7e70ee13ac5d
- ---> 1420ce020751
+ ---> Running in a618f51223eb
+Removing intermediate container a618f51223eb
+ ---> acda7071b6b8
 Step 27/32 : RUN sed -i s/'VME='/'#VME='/g assemble_synApps.sh
- ---> Running in 1f2e9c513f31
-Removing intermediate container 1f2e9c513f31
- ---> 55e43b206c05
+ ---> Running in e46f2758e76e
+Removing intermediate container e46f2758e76e
+ ---> 217a7f2ff983
 Step 28/32 : RUN sed -i s/'YOKOGAWA_DAS='/'#YOKOGAWA_DAS='/g assemble_synApps.sh
- ---> Running in c9c14ca47e2a
-Removing intermediate container c9c14ca47e2a
- ---> 0812382f4461
+ ---> Running in b315e791d781
+Removing intermediate container b315e791d781
+ ---> ecfc7d61bc20
 Step 29/32 : RUN echo # start ------------------- assemble_synApps.sh -------------------
- ---> Running in 8e67b705f37d
+ ---> Running in 4f70b8c510f4
 
-Removing intermediate container 8e67b705f37d
- ---> a299218aac14
+Removing intermediate container 4f70b8c510f4
+ ---> 6e3fe8d17e84
 Step 30/32 : RUN cat assemble_synApps.sh
- ---> Running in b6bef589c92e
+ ---> Running in 76ce52bf88e1
 #!/bin/bash
 shopt -s expand_aliases
 
-EPICS_BASE=/opt/epics-base-7.0.3
+EPICS_BASE=/opt/epics-base
 
 SUPPORT=R6-1
 CONFIGURE=R6-1
@@ -473,15 +712,15 @@ sed -i '/\$(MEASCOMP)_DEPEND_DIRS/a \$(GALIL)_DEPEND_DIRS = \$(AUTOSAVE) \$(SNCS
 fi
 
 make release
-Removing intermediate container b6bef589c92e
- ---> e8180d037e52
+Removing intermediate container 76ce52bf88e1
+ ---> 0381ad82c288
 Step 31/32 : RUN echo # end ------------------- assemble_synApps.sh -------------------
- ---> Running in 8b269e2590ba
+ ---> Running in 157f6a96b5c7
 
-Removing intermediate container 8b269e2590ba
- ---> b99f6d3fe306
+Removing intermediate container 157f6a96b5c7
+ ---> f5dc93690a79
 Step 32/32 : RUN bash assemble_synApps.sh
- ---> Running in ec60a5ee7d6d
+ ---> Running in a7a0525d2d2d
 [91mNote: checking out 'cc5adba5b8848c9cb98ab96768d668ae927d8859'.
 
 You are in 'detached HEAD' state. You can look around, make experimental
@@ -846,9 +1085,9 @@ do so (now or later) by using -b with the checkout command again. Example:
 [0m[91mSubmodule 'ADAndor3' (https://github.com/areaDetector/ADAndor3.git) registered for path 'ADAndor3'
 [0m[91mSubmodule 'ADAravis' (https://github.com/areaDetector/ADAravis) registered for path 'ADAravis'
 [0m[91mSubmodule 'ADBruker' (https://github.com/areaDetector/ADBruker.git) registered for path 'ADBruker'
-[0m[91mSubmodule 'ADCSimDetector' (https://github.com/areaDetector/ADCSimDetector.git) registered for path 'ADCSimDetector'
-[0m[91mSubmodule 'ADCameraLink' (https://github.com/areaDetector/ADCameraLink.git) registered for path 'ADCameraLink'
-[0m[91mSubmodule 'ADCompVision' (https://github.com/areaDetector/ADCompVision) registered for path 'ADCompVision'
+Submodule 'ADCSimDetector' (https://github.com/areaDetector/ADCSimDetector.git) registered for path 'ADCSimDetector'
+Submodule 'ADCameraLink' (https://github.com/areaDetector/ADCameraLink.git) registered for path 'ADCameraLink'
+Submodule 'ADCompVision' (https://github.com/areaDetector/ADCompVision) registered for path 'ADCompVision'
 [0m[91mSubmodule 'ADCore' (https://github.com/areaDetector/ADCore.git) registered for path 'ADCore'
 [0m[91mSubmodule 'ADDexela' (https://github.com/areaDetector/ADDexela.git) registered for path 'ADDexela'
 [0m[91mSubmodule 'ADEiger' (https://github.com/areaDetector/ADEiger) registered for path 'ADEiger'
@@ -861,14 +1100,14 @@ do so (now or later) by using -b with the checkout command again. Example:
 [0m[91mSubmodule 'ADMerlin' (https://github.com/areaDetector/ADMerlin.git) registered for path 'ADMerlin'
 [0m[91mSubmodule 'ADMythen' (https://github.com/areaDetector/ADMythen.git) registered for path 'ADMythen'
 [0m[91mSubmodule 'ADPCO' (https://github.com/areaDetector/ADPCO.git) registered for path 'ADPCO'
-[0m[91mSubmodule 'ADPICam' (https://github.com/areaDetector/ADPICam.git) registered for path 'ADPICam'
-[0m[91mSubmodule 'ADPSL' (https://github.com/areaDetector/ADPSL.git) registered for path 'ADPSL'
-[0m[91mSubmodule 'ADPcoWin' (https://github.com/areaDetector/ADPcoWin) registered for path 'ADPcoWin'
-[0m[91mSubmodule 'ADPerkinElmer' (https://github.com/areaDetector/ADPerkinElmer.git) registered for path 'ADPerkinElmer'
-[0m[91mSubmodule 'ADPhotonII' (https://github.com/areaDetector/ADPhotonII) registered for path 'ADPhotonII'
-Submodule 'ADPilatus' (https://github.com/areaDetector/ADPilatus.git) registered for path 'ADPilatus'
-Submodule 'ADPixirad' (https://github.com/areaDetector/ADPixirad.git) registered for path 'ADPixirad'
-Submodule 'ADPluginBar' (https://github.com/areaDetector/ADPluginBar) registered for path 'ADPluginBar'
+Submodule 'ADPICam' (https://github.com/areaDetector/ADPICam.git) registered for path 'ADPICam'
+Submodule 'ADPSL' (https://github.com/areaDetector/ADPSL.git) registered for path 'ADPSL'
+Submodule 'ADPcoWin' (https://github.com/areaDetector/ADPcoWin) registered for path 'ADPcoWin'
+Submodule 'ADPerkinElmer' (https://github.com/areaDetector/ADPerkinElmer.git) registered for path 'ADPerkinElmer'
+Submodule 'ADPhotonII' (https://github.com/areaDetector/ADPhotonII) registered for path 'ADPhotonII'
+[0m[91mSubmodule 'ADPilatus' (https://github.com/areaDetector/ADPilatus.git) registered for path 'ADPilatus'
+[0m[91mSubmodule 'ADPixirad' (https://github.com/areaDetector/ADPixirad.git) registered for path 'ADPixirad'
+[0m[91mSubmodule 'ADPluginBar' (https://github.com/areaDetector/ADPluginBar) registered for path 'ADPluginBar'
 [0m[91mSubmodule 'ADPluginEdge' (https://github.com/areaDetector/ADPluginEdge.git) registered for path 'ADPluginEdge'
 [0m[91mSubmodule 'ADPointGrey' (https://github.com/areaDetector/ADPointGrey.git) registered for path 'ADPointGrey'
 [0m[91mSubmodule 'ADProsilica' (https://github.com/areaDetector/ADProsilica.git) registered for path 'ADProsilica'
@@ -877,8 +1116,8 @@ Submodule 'ADPluginBar' (https://github.com/areaDetector/ADPluginBar) registered
 [0m[91mSubmodule 'ADRIXSCam' (https://github.com/areaDetector/ADRIXSCam.git) registered for path 'ADRIXSCam'
 [0m[91mSubmodule 'ADRoper' (https://github.com/areaDetector/ADRoper.git) registered for path 'ADRoper'
 [0m[91mSubmodule 'ADSimDetector' (https://github.com/areaDetector/ADSimDetector.git) registered for path 'ADSimDetector'
-[0m[91mSubmodule 'ADSpinnaker' (https://github.com/areaDetector/ADSpinnaker.git) registered for path 'ADSpinnaker'
-[0m[91mSubmodule 'ADSupport' (https://github.com/areaDetector/ADSupport.git) registered for path 'ADSupport'
+Submodule 'ADSpinnaker' (https://github.com/areaDetector/ADSpinnaker.git) registered for path 'ADSpinnaker'
+Submodule 'ADSupport' (https://github.com/areaDetector/ADSupport.git) registered for path 'ADSupport'
 [0m[91mSubmodule 'ADURL' (https://github.com/areaDetector/ADURL.git) registered for path 'ADURL'
 [0m[91mSubmodule 'ADViewers' (https://github.com/areaDetector/ADViewers.git) registered for path 'ADViewers'
 [0m[91mSubmodule 'ADVimba' (https://github.com/areaDetector/ADVimba) registered for path 'ADVimba'
@@ -888,10 +1127,10 @@ Submodule 'ADPluginBar' (https://github.com/areaDetector/ADPluginBar) registered
 [0m[91mSubmodule 'NDDriverStdArrays' (https://github.com/areaDetector/NDDriverStdArrays.git) registered for path 'NDDriverStdArrays'
 [0m[91mSubmodule 'aravisGigE' (https://github.com/areaDetector/aravisGigE.git) registered for path 'aravisGigE'
 [0m[91mSubmodule 'ffmpegServer' (https://github.com/areaDetector/ffmpegServer.git) registered for path 'ffmpegServer'
-[0m[91mSubmodule 'ffmpegViewer' (https://github.com/areaDetector/ffmpegViewer.git) registered for path 'ffmpegViewer'
-[0m[91mSubmodule 'firewireDCAM' (https://github.com/areaDetector/firewireDCAM.git) registered for path 'firewireDCAM'
-[0m[91mSubmodule 'pvaDriver' (https://github.com/areaDetector/pvaDriver.git) registered for path 'pvaDriver'
-Submodule 'specsAnalyser' (https://github.com/areaDetector/specsAnalyser.git) registered for path 'specsAnalyser'
+Submodule 'ffmpegViewer' (https://github.com/areaDetector/ffmpegViewer.git) registered for path 'ffmpegViewer'
+Submodule 'firewireDCAM' (https://github.com/areaDetector/firewireDCAM.git) registered for path 'firewireDCAM'
+Submodule 'pvaDriver' (https://github.com/areaDetector/pvaDriver.git) registered for path 'pvaDriver'
+[0m[91mSubmodule 'specsAnalyser' (https://github.com/areaDetector/specsAnalyser.git) registered for path 'specsAnalyser'
 [0m[91mCloning into '/opt/synApps/support/areaDetector-R3-7/ADCore'...
 [0mSubmodule path 'ADCore': checked out '826cd668c833a69b17be6d168f7c479f06ee2bfd'
 [91mCloning into '/opt/synApps/support/areaDetector-R3-7/ADSupport'...
@@ -907,28 +1146,28 @@ Submodule 'specsAnalyser' (https://github.com/areaDetector/specsAnalyser.git) re
 [0m[91mSubmodule 'modules/motorFaulhaber' (https://github.com/epics-motor/motorFaulhaber.git) registered for path 'modules/motorFaulhaber'
 [0m[91mSubmodule 'modules/motorHytec' (https://github.com/epics-motor/motorHytec.git) registered for path 'modules/motorHytec'
 [0m[91mSubmodule 'modules/motorIms' (https://github.com/epics-motor/motorIms.git) registered for path 'modules/motorIms'
-Submodule 'modules/motorKohzu' (https://github.com/epics-motor/motorKohzu.git) registered for path 'modules/motorKohzu'
-Submodule 'modules/motorMXmotor' (https://github.com/epics-motor/motorMXmotor.git) registered for path 'modules/motorMXmotor'
-Submodule 'modules/motorMclennan' (https://github.com/epics-motor/motorMclennan.git) registered for path 'modules/motorMclennan'
-Submodule 'modules/motorMicos' (https://github.com/epics-motor/motorMicos.git) registered for path 'modules/motorMicos'
-Submodule 'modules/motorMicroMo' (https://github.com/epics-motor/motorMicroMo.git) registered for path 'modules/motorMicroMo'
+[0m[91mSubmodule 'modules/motorKohzu' (https://github.com/epics-motor/motorKohzu.git) registered for path 'modules/motorKohzu'
+[0m[91mSubmodule 'modules/motorMXmotor' (https://github.com/epics-motor/motorMXmotor.git) registered for path 'modules/motorMXmotor'
+[0m[91mSubmodule 'modules/motorMclennan' (https://github.com/epics-motor/motorMclennan.git) registered for path 'modules/motorMclennan'
+[0m[91mSubmodule 'modules/motorMicos' (https://github.com/epics-motor/motorMicos.git) registered for path 'modules/motorMicos'
+[0m[91mSubmodule 'modules/motorMicroMo' (https://github.com/epics-motor/motorMicroMo.git) registered for path 'modules/motorMicroMo'
 [0m[91mSubmodule 'modules/motorMicronix' (https://github.com/epics-motor/motorMicronix.git) registered for path 'modules/motorMicronix'
 [0m[91mSubmodule 'modules/motorMotorSim' (https://github.com/epics-motor/motorMotorSim.git) registered for path 'modules/motorMotorSim'
-[0m[91mSubmodule 'modules/motorNPoint' (https://github.com/epics-motor/motorNPoint.git) registered for path 'modules/motorNPoint'
-[0m[91mSubmodule 'modules/motorNewFocus' (https://github.com/epics-motor/motorNewFocus.git) registered for path 'modules/motorNewFocus'
+Submodule 'modules/motorNPoint' (https://github.com/epics-motor/motorNPoint.git) registered for path 'modules/motorNPoint'
+Submodule 'modules/motorNewFocus' (https://github.com/epics-motor/motorNewFocus.git) registered for path 'modules/motorNewFocus'
 Submodule 'modules/motorNewport' (https://github.com/epics-motor/motorNewport.git) registered for path 'modules/motorNewport'
-[0m[91mSubmodule 'modules/motorOms' (https://github.com/epics-motor/motorOms.git) registered for path 'modules/motorOms'
-Submodule 'modules/motorOmsAsyn' (https://github.com/epics-motor/motorOmsAsyn.git) registered for path 'modules/motorOmsAsyn'
-Submodule 'modules/motorOriel' (https://github.com/epics-motor/motorOriel.git) registered for path 'modules/motorOriel'
-Submodule 'modules/motorPI' (https://github.com/epics-motor/motorPI.git) registered for path 'modules/motorPI'
+Submodule 'modules/motorOms' (https://github.com/epics-motor/motorOms.git) registered for path 'modules/motorOms'
+[0m[91mSubmodule 'modules/motorOmsAsyn' (https://github.com/epics-motor/motorOmsAsyn.git) registered for path 'modules/motorOmsAsyn'
+[0m[91mSubmodule 'modules/motorOriel' (https://github.com/epics-motor/motorOriel.git) registered for path 'modules/motorOriel'
+[0m[91mSubmodule 'modules/motorPI' (https://github.com/epics-motor/motorPI.git) registered for path 'modules/motorPI'
 [0m[91mSubmodule 'modules/motorPIGCS2' (https://github.com/epics-motor/motorPIGCS2.git) registered for path 'modules/motorPIGCS2'
-Submodule 'modules/motorParker' (https://github.com/epics-motor/motorParker.git) registered for path 'modules/motorParker'
+[0m[91mSubmodule 'modules/motorParker' (https://github.com/epics-motor/motorParker.git) registered for path 'modules/motorParker'
 [0m[91mSubmodule 'modules/motorPhytron' (https://github.com/epics-motor/motorPhytron.git) registered for path 'modules/motorPhytron'
-Submodule 'modules/motorPiJena' (https://github.com/epics-motor/motorPiJena.git) registered for path 'modules/motorPiJena'
+[0m[91mSubmodule 'modules/motorPiJena' (https://github.com/epics-motor/motorPiJena.git) registered for path 'modules/motorPiJena'
 [0m[91mSubmodule 'modules/motorScriptMotor' (https://github.com/epics-motor/motorScriptMotor.git) registered for path 'modules/motorScriptMotor'
 [0m[91mSubmodule 'modules/motorSmarAct' (https://github.com/epics-motor/motorSmarAct.git) registered for path 'modules/motorSmarAct'
 [0m[91mSubmodule 'modules/motorSmartMotor' (https://github.com/epics-motor/motorSmartMotor.git) registered for path 'modules/motorSmartMotor'
-[0m[91mSubmodule 'modules/motorThorLabs' (https://github.com/epics-motor/motorThorLabs.git) registered for path 'modules/motorThorLabs'
+Submodule 'modules/motorThorLabs' (https://github.com/epics-motor/motorThorLabs.git) registered for path 'modules/motorThorLabs'
 [0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorAMCI'...
 [0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorAcs'...
 [0m[91mCloning into '/opt/synApps/support/motor-R7-1/modules/motorAcsTech80'...
@@ -991,27 +1230,48 @@ Submodule path 'modules/motorScriptMotor': checked out '495b57a61c196c1440c7ae6b
 Submodule path 'modules/motorSmarAct': checked out '66015236bd1bf44176bf6dc5cdb99761b43dee31'
 Submodule path 'modules/motorSmartMotor': checked out 'ee30ba9cc44761a0cd28e22c9b48903368417096'
 Submodule path 'modules/motorThorLabs': checked out '0a9ec8f1184f0b37e12f79b2746303f9fbbbe9c2'
-[91m--2019-09-26 05:10:11--  http://www-csr.bessy.de/control/SoftDist/sequencer/releases/seq-2.2.6.tar.gz
+[91m--2019-09-26 05:50:45--  http://www-csr.bessy.de/control/SoftDist/sequencer/releases/seq-2.2.6.tar.gz
 [0m[91mResolving www-csr.bessy.de (www-csr.bessy.de)... [0m[91m193.149.12.250
 Connecting to www-csr.bessy.de (www-csr.bessy.de)|193.149.12.250|:80... [0m[91mconnected.
 HTTP request sent, awaiting response... [0m[91m302 Found
 Location: https://www-csr.bessy.de/control/SoftDist/sequencer/releases/seq-2.2.6.tar.gz [following]
---2019-09-26 05:10:11--  https://www-csr.bessy.de/control/SoftDist/sequencer/releases/seq-2.2.6.tar.gz
+--2019-09-26 05:50:45--  https://www-csr.bessy.de/control/SoftDist/sequencer/releases/seq-2.2.6.tar.gz
 Connecting to www-csr.bessy.de (www-csr.bessy.de)|193.149.12.250|:443... [0m[91mconnected.
 [0m[91mHTTP request sent, awaiting response... [0m[91m200 OK
 Length: 306984 (300K) [application/x-gzip]
 Saving to: 'seq-2.2.6.tar.gz'
 [0m[91m
-     0K .......... ......[0m[91m.... .......... ..[0m[91m........ ........[0m[91m.. 16%  184K 1s
-    50K .......... ....[0m[91m...... ..........[0m[91m .......... ......[0m[91m.... 33% 2.73M 1s
-   100K .......... ..[0m[91m........ ........[0m[91m.. .......... ....[0m[91m...... 50%  408K 0s
-   150K ..........[0m[91m .......... ......[0m[91m.... .......... ..[0m[91m........ 66% 3.71M 0s
-   200K ........[0m[91m.. .......... ....[0m[91m...... ..........[0m[91m .......... 83%  401K 0s
-   250K ......[0m[91m.... .......... ..[0m[91m........ ........[0m[91m.. ......... 100% 4.81M=0.6s
+     0K .......... ......[0m[91m.... .......... ..[0m[91m........ ........[0m[91m.. 16%  182K 1s
+    50K .......... ....[0m[91m...... ..........[0m[91m .......... .......... 33% 3.47M 1s
+   100K .......... ..[0m[91m........ ........[0m[91m.. .......... ....[0m[91m...... 50%  376K 0s
+   150K ..........[0m[91m .......... ......[0m[91m.... .......... ..[0m[91m........ 66%  329K 0s
+   200K ........[0m[91m.. .......... ....[0m[91m...... ..........[0m[91m .......... 83% 4.01M 0s
+   250K ......[0m[91m.... .......... ..[0m[91m........ ........[0m[91m.. ......... 100%  219K=0.8s
 
-2019-09-26 05:10:12 (535 KB/s) - 'seq-2.2.6.tar.gz' saved [306984/306984]
+2019-09-26 05:50:47 (368 KB/s) - 'seq-2.2.6.tar.gz' saved [306984/306984]
 
-[0m[91mconfigure/CONFIG:18: /opt/epics-base-7.0.3/configure/CONFIG: No such file or directory
-[0m[91mconfigure/RULES_TOP:2: /opt/epics-base-7.0.3/configure/RULES_TOP: No such file or directory
-[0m[91mmake: *** No rule to make target '/opt/epics-base-7.0.3/configure/RULES_TOP'.  Stop.
-[0mThe command '/bin/sh -c bash assemble_synApps.sh' returned a non-zero code: 2
+[0mecho SUPPORT=/opt/synApps/support
+SUPPORT=/opt/synApps/support
+echo ' '
+ 
+echo EPICS_BASE=/opt/epics-base
+EPICS_BASE=/opt/epics-base
+echo ' '
+ 
+echo MASTER_FILE=./configure/RELEASE
+MASTER_FILE=./configure/RELEASE
+echo ' '
+ 
+echo DIRS= configure /opt/synApps/support/alive-R1-1-1 /opt/synApps/support/areaDetector-R3-7 /opt/synApps/support/asyn-R4-36 /opt/synApps/support/autosave-R5-10 /opt/synApps/support/busy-R1-7-2 /opt/synApps/support/calc-R3-7-3 /opt/synApps/support/caputRecorder-R1-7-2 /opt/synApps/support/iocStats-3-1-16 /opt/synApps/support/ipac-2-15 /opt/synApps/support/ip-R2-20-1 /opt/synApps/support/lua-R2-0 /opt/synApps/support/mca-R7-8 /opt/synApps/support/measComp-R2-3 /opt/synApps/support/modbus-R3-0 /opt/synApps/support/motor-R7-1 /opt/synApps/support/optics-R2-13-3 /opt/synApps/support/seq-2-2-6 /opt/synApps/support/sscan-R2-11-3 /opt/synApps/support/std-R3-6 /opt/synApps/support/StreamDevice-2-8-9 /opt/synApps/support/vac-R1-9 /opt/synApps/support/xxx-R6-1
+DIRS= configure /opt/synApps/support/alive-R1-1-1 /opt/synApps/support/areaDetector-R3-7 /opt/synApps/support/asyn-R4-36 /opt/synApps/support/autosave-R5-10 /opt/synApps/support/busy-R1-7-2 /opt/synApps/support/calc-R3-7-3 /opt/synApps/support/caputRecorder-R1-7-2 /opt/synApps/support/iocStats-3-1-16 /opt/synApps/support/ipac-2-15 /opt/synApps/support/ip-R2-20-1 /opt/synApps/support/lua-R2-0 /opt/synApps/support/mca-R7-8 /opt/synApps/support/measComp-R2-3 /opt/synApps/support/modbus-R3-0 /opt/synApps/support/motor-R7-1 /opt/synApps/support/optics-R2-13-3 /opt/synApps/support/seq-2-2-6 /opt/synApps/support/sscan-R2-11-3 /opt/synApps/support/std-R3-6 /opt/synApps/support/StreamDevice-2-8-9 /opt/synApps/support/vac-R1-9 /opt/synApps/support/xxx-R6-1
+echo ' '
+ 
+echo RELEASE_FILES=/opt/synApps/support/alive-R1-1-1/configure/RELEASE                   /opt/synApps/support/areaDetector-R3-7/configure/RELEASE /opt/synApps/support/areaDetector-R3-7/configure/RELEASE_BASE.local   /opt/synApps/support/areaDetector-R3-7/configure/RELEASE_SUPPORT.local      /opt/synApps/support/areaDetector-R3-7/configure/RELEASE_LIBS.local   /opt/synApps/support/areaDetector-R3-7/configure/RELEASE_PRODS.local   /opt/synApps/support/areaDetector-R3-7/configure/RELEASE.local   /opt/synApps/support/asyn-R4-36/configure/RELEASE                   /opt/synApps/support/autosave-R5-10/configure/RELEASE                   /opt/synApps/support/busy-R1-7-2/configure/RELEASE                   /opt/synApps/support/calc-R3-7-3/configure/RELEASE                   /opt/synApps/support/caputRecorder-R1-7-2/configure/RELEASE                   /opt/synApps/support/iocStats-3-1-16/configure/RELEASE                   /opt/synApps/support/ipac-2-15/configure/RELEASE                   /opt/synApps/support/ip-R2-20-1/configure/RELEASE                   /opt/synApps/support/lua-R2-0/configure/RELEASE                   /opt/synApps/support/mca-R7-8/configure/RELEASE                   /opt/synApps/support/measComp-R2-3/configure/RELEASE                   /opt/synApps/support/modbus-R3-0/configure/RELEASE                   /opt/synApps/support/motor-R7-1/configure/RELEASE                   /opt/synApps/support/optics-R2-13-3/configure/RELEASE                   /opt/synApps/support/seq-2-2-6/configure/RELEASE                   /opt/synApps/support/sscan-R2-11-3/configure/RELEASE                   /opt/synApps/support/std-R3-6/configure/RELEASE                   /opt/synApps/support/StreamDevice-2-8-9/configure/RELEASE                   /opt/synApps/support/vac-R1-9/configure/RELEASE                   /opt/synApps/support/xxx-R6-1/configure/RELEASE                  
+RELEASE_FILES=/opt/synApps/support/alive-R1-1-1/configure/RELEASE /opt/synApps/support/areaDetector-R3-7/configure/RELEASE /opt/synApps/support/areaDetector-R3-7/configure/RELEASE_BASE.local /opt/synApps/support/areaDetector-R3-7/configure/RELEASE_SUPPORT.local /opt/synApps/support/areaDetector-R3-7/configure/RELEASE_LIBS.local /opt/synApps/support/areaDetector-R3-7/configure/RELEASE_PRODS.local /opt/synApps/support/areaDetector-R3-7/configure/RELEASE.local /opt/synApps/support/asyn-R4-36/configure/RELEASE /opt/synApps/support/autosave-R5-10/configure/RELEASE /opt/synApps/support/busy-R1-7-2/configure/RELEASE /opt/synApps/support/calc-R3-7-3/configure/RELEASE /opt/synApps/support/caputRecorder-R1-7-2/configure/RELEASE /opt/synApps/support/iocStats-3-1-16/configure/RELEASE /opt/synApps/support/ipac-2-15/configure/RELEASE /opt/synApps/support/ip-R2-20-1/configure/RELEASE /opt/synApps/support/lua-R2-0/configure/RELEASE /opt/synApps/support/mca-R7-8/configure/RELEASE /opt/synApps/support/measComp-R2-3/configure/RELEASE /opt/synApps/support/modbus-R3-0/configure/RELEASE /opt/synApps/support/motor-R7-1/configure/RELEASE /opt/synApps/support/optics-R2-13-3/configure/RELEASE /opt/synApps/support/seq-2-2-6/configure/RELEASE /opt/synApps/support/sscan-R2-11-3/configure/RELEASE /opt/synApps/support/std-R3-6/configure/RELEASE /opt/synApps/support/StreamDevice-2-8-9/configure/RELEASE /opt/synApps/support/vac-R1-9/configure/RELEASE /opt/synApps/support/xxx-R6-1/configure/RELEASE
+echo ' '
+ 
+perl -CSD ./configure/makeReleaseConsistent.pl /opt/synApps/support /opt/epics-base ./configure/RELEASE /opt/synApps/support/alive-R1-1-1/configure/RELEASE                   /opt/synApps/support/areaDetector-R3-7/configure/RELEASE /opt/synApps/support/areaDetector-R3-7/configure/RELEASE_BASE.local   /opt/synApps/support/areaDetector-R3-7/configure/RELEASE_SUPPORT.local      /opt/synApps/support/areaDetector-R3-7/configure/RELEASE_LIBS.local   /opt/synApps/support/areaDetector-R3-7/configure/RELEASE_PRODS.local   /opt/synApps/support/areaDetector-R3-7/configure/RELEASE.local   /opt/synApps/support/asyn-R4-36/configure/RELEASE                   /opt/synApps/support/autosave-R5-10/configure/RELEASE                   /opt/synApps/support/busy-R1-7-2/configure/RELEASE                   /opt/synApps/support/calc-R3-7-3/configure/RELEASE                   /opt/synApps/support/caputRecorder-R1-7-2/configure/RELEASE                   /opt/synApps/support/iocStats-3-1-16/configure/RELEASE                   /opt/synApps/support/ipac-2-15/configure/RELEASE                   /opt/synApps/support/ip-R2-20-1/configure/RELEASE                   /opt/synApps/support/lua-R2-0/configure/RELEASE                   /opt/synApps/support/mca-R7-8/configure/RELEASE                   /opt/synApps/support/measComp-R2-3/configure/RELEASE                   /opt/synApps/support/modbus-R3-0/configure/RELEASE                   /opt/synApps/support/motor-R7-1/configure/RELEASE                   /opt/synApps/support/optics-R2-13-3/configure/RELEASE                   /opt/synApps/support/seq-2-2-6/configure/RELEASE                   /opt/synApps/support/sscan-R2-11-3/configure/RELEASE                   /opt/synApps/support/std-R3-6/configure/RELEASE                   /opt/synApps/support/StreamDevice-2-8-9/configure/RELEASE                   /opt/synApps/support/vac-R1-9/configure/RELEASE                   /opt/synApps/support/xxx-R6-1/configure/RELEASE                  
+Removing intermediate container a7a0525d2d2d
+ ---> 5a318547616d
+Successfully built 5a318547616d
+Successfully tagged prjemian/epics:synApps-6.1
