@@ -6,9 +6,9 @@ USER  root
 WORKDIR /home
 
 # Install necessary libraries from offical repo
-RUN apt update  -y && \
-    apt upgrade -y && \
-    apt install -y  build-essential libreadline-dev wget
+RUN apt-get update  -y && \
+    apt-get upgrade -y && \
+    apt-get install -y  build-essential libreadline-dev wget
 
 # Get the latest version of EPICS
 ENV EPICS_HOST_ARCH=linux-x86_64

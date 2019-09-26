@@ -11,9 +11,9 @@ USER  root
 # * run IOCs in screen sessions
 # * xvfb for remote GUI viewing
 RUN \
-    apt update  -y && \
-    apt upgrade -y && \
-    apt install -y  \
+    apt-get update  -y && \
+    apt-get upgrade -y && \
+    apt-get install -y  \
        git \
        libusb-dev \
        libusb-1.0-0-dev \
