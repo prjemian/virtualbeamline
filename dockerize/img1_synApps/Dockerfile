@@ -71,5 +71,10 @@ RUN bash assemble_synApps.sh
 WORKDIR ${SUPPORT}
 RUN ls -lAFgh
 # # edit a few things before build
+# TODO: area detector PVaccess -- look at the documentation
+# TODO: area detector plugins -- look at the documentation
 # # done editing
-RUN make clean release all
+RUN make clean release
+# archive the template IOC, for making new XXX IOCs
+RUN tar czf ../../xxx-R6-1.tar.gz xxx-R6-1
+RUN all
