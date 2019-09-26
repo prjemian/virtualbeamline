@@ -15,3 +15,6 @@ shell ::
 
 push ::
 	docker push $(FULLNAME)
+
+net ::
+	docker network create --driver bridge $(NET)
