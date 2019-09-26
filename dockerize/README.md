@@ -10,3 +10,14 @@ docker run -dit --rm -e IOC_PREFIX='dkrSIM1:' --net=virtualbeam --name='iocdkrSI
 docker run -dit --rm -e IOC_PREFIX='dkr2:' -e IOCNAME='dkr2' --net=virtualbeam --name="iocdkr2" kedokudo/virtualbeamline:ioc6iddsimmtr /bin/bash
 docker attach iocdkrSIM1
 ```
+
+### publish to DockerHub
+
+```
+docker tag local-image:tagname new-repo:tagname
+docker push new-repo:tagname
+
+docker login --user prjemian
+docker tag local-image:tagname prjemian/epics:tagname
+docker push prjemian/epics:tagname
+```
