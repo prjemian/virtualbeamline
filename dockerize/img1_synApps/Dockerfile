@@ -7,11 +7,9 @@ USER  root
 
 # Install necessary libraries from offical repo
 # * need the libusb (newer faster usb support)
-# TODO: Really?  * need the x11 support -- not for synApps
-    #    libx11-dev \
-    #    x11-xserver-utils \
-    #    xorg-dev \
-    #    xvfb \
+# * area detector needs X11 (GraphicsMagick)
+# * run IOCs in screen sessions
+# * xvfb for remote GUI viewing
 RUN \
     apt update  -y && \
     apt upgrade -y && \
@@ -19,8 +17,12 @@ RUN \
        git \
        libusb-dev \
        libusb-1.0-0-dev \
+       libx11-dev \
        re2c \
        screen \
+       x11-xserver-utils \
+       xorg-dev \
+       xvfb \
        && \
     rm -rf /var/lib/apt/lists/*
 
