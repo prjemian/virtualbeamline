@@ -1,47 +1,24 @@
-# Use the EPICS base image
-FROM prjemian/epics:epics-base-7.0.3
-LABEL version="0.0.1" \
-      maintainer="prjemian <prjemian@gmail.com>" \
-      lastupdate="2019-09-26"
-USER  root
+#!/bin/bash
 
-# Install necessary libraries from offical repo
-# * need the libusb (newer faster usb support)
-# * area detector needs X11 (GraphicsMagick)
-# * run IOCs in screen sessions
-# * xvfb for remote GUI viewing
-RUN \
-    apt update  -y && \
-    apt upgrade -y && \
-    apt install -y  \
-       git \
-       libusb-dev \
-       libusb-1.0-0-dev \
-       libx11-dev \
-       re2c \
-       screen \
-       x11-xserver-utils \
-       xorg-dev \
-       xvfb \
-       && \
-    rm -rf /var/lib/apt/lists/*
+# download and build synApps
 
-ENV EPICS_HOST_ARCH=linux-x86_64
-ENV EPICS_ROOT="/opt/epics-base"
-ENV PATH="${PATH}:${EPICS_ROOT}/bin/${EPICS_HOST_ARCH}"
-ENV SYNAPPS_PARENT="/opt"
-ENV SUPPORT="${SYNAPPS_PARENT}/synApps/support"
-ENV PATH="${PATH}:${SUPPORT}/utils"
+PARENT_DIR="/opt"
 
-WORKDIR ${SYNAPPS_PARENT}
+EPICS_HOST_ARCH=linux-x86_64
+EPICS_ROOT="${PARENT_DIR}/epics-base"
+PATH="${PATH}:${EPICS_ROOT}/bin/${EPICS_HOST_ARCH}"
+SUPPORT="${PARENT_DIR}/synApps/support"
+PATH="${PATH}:${SUPPORT}/utils"
+
+cd ${PARENT_DIR}
 # synApps 6.1 release
-ENV HASH=cc5adba5b8848c9cb98ab96768d668ae927d8859
-RUN wget https://raw.githubusercontent.com/EPICS-synApps/support/${HASH}/assemble_synApps.sh
+HASH=cc5adba5b8848c9cb98ab96768d668ae927d8859
+wget https://raw.githubusercontent.com/EPICS-synApps/support/${HASH}/assemble_synApps.sh
 
 # edit the script first!
-RUN sed -i s='/APSshare/epics/base-3.15.6'='/opt/epics-base'=g assemble_synApps.sh
+sed -i s='/APSshare/epics/base-3.15.6'='/opt/epics-base'=g assemble_synApps.sh
 # do NOT build these for linux-x86_64
-RUN sed -i s/'ALLENBRADLEY='/'#ALLENBRADLEY='/g assemble_synApps.sh && \
+sed -i s/'ALLENBRADLEY='/'#ALLENBRADLEY='/g assemble_synApps.sh && \
     sed -i s/'CAMAC='/'#CAMAC='/g assemble_synApps.sh && \
     sed -i s/'DAC128V='/'#DAC128V='/g assemble_synApps.sh && \
     sed -i s/'DELAYGEN='/'#DELAYGEN='/g assemble_synApps.sh && \
@@ -58,19 +35,16 @@ RUN sed -i s/'ALLENBRADLEY='/'#ALLENBRADLEY='/g assemble_synApps.sh && \
 # done editing
 
 # review
-RUN echo # start ------------------- assemble_synApps.sh -------------------
-RUN cat assemble_synApps.sh
-RUN echo # end ------------------- assemble_synApps.sh -------------------
+# echo # start ------------------- assemble_synApps.sh -------------------
+# cat assemble_synApps.sh
+# echo # end ------------------- assemble_synApps.sh -------------------
 
 # # run the script now
-RUN bash assemble_synApps.sh
-
-WORKDIR ${SUPPORT}
-# RUN ls -lAFgh
+bash assemble_synApps.sh
 
 # recommended edits: https://areadetector.github.io/master/install_guide.html
-WORKDIR ${SUPPORT}/areaDetector-R3-7/configure
-RUN cp EXAMPLE_RELEASE.local         RELEASE.local && \
+cd ${SUPPORT}/areaDetector-R3-7/configure
+cp EXAMPLE_RELEASE.local         RELEASE.local && \
     cp EXAMPLE_RELEASE_SUPPORT.local RELEASE_SUPPORT.local && \
     cp EXAMPLE_RELEASE_LIBS.local    RELEASE_LIBS.local && \
     cp EXAMPLE_RELEASE_PRODS.local   RELEASE_PRODS.local && \
@@ -91,17 +65,16 @@ RUN cp EXAMPLE_RELEASE.local         RELEASE.local && \
     sed -i s:'sscan-2-11-3':'sscan-R2-11-3':g RELEASE_PRODS.local && \
     sed -i s:'devIocStats-3-1-16':'iocStats-3-1-16':g RELEASE_PRODS.local && \
     sed -i s:'EPICS_BASE=/corvette/usr/local/epics-devel/base-7.0.3':'EPICS_BASE=/opt/base-7.0.3':g RELEASE_PRODS.local
-WORKDIR ${SUPPORT}/areaDetector-R3-7/ADCore/iocBoot
-RUN cp EXAMPLE_commonPlugins.cmd           commonPlugins.cmd && \
+cd ${SUPPORT}/areaDetector-R3-7/ADCore/iocBoot
+cp EXAMPLE_commonPlugins.cmd           commonPlugins.cmd && \
     cp EXAMPLE_commonPlugin_settings.req   commonPlugin_settings.req && \
     sed -i s:'#NDPvaConfigure':'NDPvaConfigure':g commonPlugins.cmd && \
     sed -i s:'#dbLoadRecords("NDPva':'dbLoadRecords("NDPva':g commonPlugins.cmd && \
     sed -i s:'#startPVAServer':'startPVAServer':g commonPlugins.cmd
 # done editing
 
-WORKDIR ${SUPPORT}
+cd ${SUPPORT}
 # archive the template IOC, for making new XXX IOCs
-RUN tar czf ../../xxx-R6-1.tar.gz xxx-R6-1
-RUN make -j2 all
-
-RUN make clean
+tar czf ../../xxx-R6-1.tar.gz xxx-R6-1
+make -j2 all
+make clean
