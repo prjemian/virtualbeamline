@@ -121,14 +121,43 @@ RUN tar czf ${SUPPORT}/../iocSimDetector-3.7.tar.gz iocSimDetector
 
 WORKDIR ${SUPPORT}
 # archive the template IOC, for making new XXX IOCs
-RUN tar czf ${SUPPORT}/../xxx-R6-1.tar.gz xxx-R6-1
+RUN tar czf ${SUPPORT}/../xxx-R6-1.tar.gz xxx-R6-1 && \
+    ln -s ${XXX}/iocBoot/iocxxx/ ./iocxxx && \
+    ln -s ${AREA_DETECTOR}/ADSimDetector/iocs/simDetectorIOC/iocBoot/iocSimDetector/ ./iocSimDetector
 
 # Build it all
-RUN make -j2 all
+RUN make -j2 all && \
+    make clean
 
-WORKDIR ${XXX}/iocBoot/iocxxx/
+WORKDIR ${SUPPORT}/iocxxx/
+# build envPaths
+RUN make
+
+WORKDIR ${SUPPORT}/iocSimDetector/
 # build envPaths
 RUN make
 
 WORKDIR ${SUPPORT}
-RUN make clean
+
+# FIXME: boot error remains
+    # # Optional: load NDPluginPva plugin
+    # NDPvaConfigure("PVA1", 20, 0, "SIM1", 0, 13SIM1:Pva1:Image, 0, 0, 0)
+    # commonPlugins.cmd line 171: Command NDPvaConfigure not found.
+    # dbLoadRecords("NDPva.template",  "P=13SIM1:,R=Pva1:, PORT=PVA1,ADDR=0,TIMEOUT=1,NDARRAY_PORT=SIM1")
+    # # Must start PVA server if this is enabled
+    # startPVAServer
+    # commonPlugins.cmd line 174: Command startPVAServer not found.
+
+    # and
+
+    # 13SIM1:Pva1:ADCoreVersion_RBV devAsynOctet::initCommon connectDevice failed asynManager:connectDevice port PVA1 not found
+    # 13SIM1:Pva1:DriverVersion_RBV devAsynOctet::initCommon connectDevice failed asynManager:connectDevice port PVA1 not found
+    # 13SIM1:Pva1:PortName_RBV devAsynOctet::initCommon connectDevice failed asynManager:connectDevice port PVA1 not found
+
+# TODO: needs this script added
+    # root@2c992a77fdd6:/opt/synApps/support/iocSimDetector# more run
+    # #!/bin/sh
+
+    # ../../bin/linux-x86_64/simDetectorApp st.cmd
+
+# TODO: needs in-screen.sh script added, also (see iocxxx/softioc/in-screen.sh)
