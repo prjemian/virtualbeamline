@@ -16,22 +16,22 @@ HASH=cc5adba5b8848c9cb98ab96768d668ae927d8859
 wget https://raw.githubusercontent.com/EPICS-synApps/support/${HASH}/assemble_synApps.sh
 
 # edit the script first!
-sed -i s='/APSshare/epics/base-3.15.6'='/opt/epics-base'=g assemble_synApps.sh
+sed -i s:'/APSshare/epics/base-3.15.6':'/opt/epics-base':g assemble_synApps.sh
 # do NOT build these for linux-x86_64
-sed -i s/'ALLENBRADLEY='/'#ALLENBRADLEY='/g assemble_synApps.sh && \
-    sed -i s/'CAMAC='/'#CAMAC='/g assemble_synApps.sh && \
-    sed -i s/'DAC128V='/'#DAC128V='/g assemble_synApps.sh && \
-    sed -i s/'DELAYGEN='/'#DELAYGEN='/g assemble_synApps.sh && \
-    sed -i s/'DXP='/'#DXP='/g assemble_synApps.sh && \
-    sed -i s/'DXPSITORO='/'#DXPSITORO='/g assemble_synApps.sh && \
-    sed -i s/'IP330='/'#IP330='/g assemble_synApps.sh && \
-    sed -i s/'IPUNIDIG='/'#IPUNIDIG='/g assemble_synApps.sh && \
-    sed -i s/'LOVE='/'#LOVE='/g assemble_synApps.sh && \
-    sed -i s/'QUADEM='/'#QUADEM='/g assemble_synApps.sh && \
-    sed -i s/'SOFTGLUE='/'#SOFTGLUE='/g assemble_synApps.sh && \
-    sed -i s/'SOFTGLUEZYNQ='/'#SOFTGLUEZYNQ='/g assemble_synApps.sh && \
-    sed -i s/'VME='/'#VME='/g assemble_synApps.sh && \
-    sed -i s/'YOKOGAWA_DAS='/'#YOKOGAWA_DAS='/g assemble_synApps.sh
+sed -i s:'ALLENBRADLEY=':'#ALLENBRADLEY=':g assemble_synApps.sh && \
+    sed -i s:'CAMAC=':'#CAMAC=':g assemble_synApps.sh && \
+    sed -i s:'DAC128V=':'#DAC128V=':g assemble_synApps.sh && \
+    sed -i s:'DELAYGEN=':'#DELAYGEN=':g assemble_synApps.sh && \
+    sed -i s:'DXP=':'#DXP=':g assemble_synApps.sh && \
+    sed -i s:'DXPSITORO=':'#DXPSITORO=':g assemble_synApps.sh && \
+    sed -i s:'IP330=':'#IP330=':g assemble_synApps.sh && \
+    sed -i s:'IPUNIDIG=':'#IPUNIDIG=':g assemble_synApps.sh && \
+    sed -i s:'LOVE=':'#LOVE=':g assemble_synApps.sh && \
+    sed -i s:'QUADEM=':'#QUADEM=':g assemble_synApps.sh && \
+    sed -i s:'SOFTGLUE=':'#SOFTGLUE=':g assemble_synApps.sh && \
+    sed -i s:'SOFTGLUEZYNQ=':'#SOFTGLUEZYNQ=':g assemble_synApps.sh && \
+    sed -i s:'VME=':'#VME=':g assemble_synApps.sh && \
+    sed -i s:'YOKOGAWA_DAS=':'#YOKOGAWA_DAS=':g assemble_synApps.sh
 # done editing
 
 # review
@@ -43,6 +43,20 @@ sed -i s/'ALLENBRADLEY='/'#ALLENBRADLEY='/g assemble_synApps.sh && \
 bash assemble_synApps.sh
 
 AREA_DETECTOR=${SUPPORT}/areaDetector-R3-7
+MOTOR=${SUPPORT}/motor-R7-1
+XXX=${SUPPORT}/xxx-R6-1
+
+cd ${XXX}/iocBoot/iocxxx/
+cp examples/motors.iocsh ./ && \
+    cp examples/std.iocsh    ./ && \
+    cp ${MOTOR}/modules/motorMotorSim/iocsh/motorSim.iocsh                 ${MOTOR}/iocsh/ && \
+    cp ${MOTOR}/modules/motorMotorSim/iocsh/EXAMPLE_motorSim.substitutions ${MOTOR}/iocsh/ && \
+    sed -i s:'#iocshLoad("$(STD)/iocsh/softScaler':'iocshLoad("$(STD)/iocsh/softScaler':g std.iocsh && \
+    sed -i s:'#iocshLoad("$(MOTOR)/iocsh/motorSim.iocsh"':'iocshLoad("$(MOTOR)/iocsh/motorSim.iocsh"':g motors.iocsh && \
+    sed -i s:'dbLoadTemplate("substitutions/motor.substitutions"':'#dbLoadTemplate("substitutions/motor.substitutions"':g motors.iocsh && \
+    sed -i s:'< common.iocsh':'< common.iocsh\n< std.iocsh\n< motors.iocsh':g st.cmd.Linux
+
+
 # recommended edits: https://areadetector.github.io/master/install_guide.html
 cd ${AREA_DETECTOR}/configure
 cp EXAMPLE_RELEASE.local         RELEASE.local && \
