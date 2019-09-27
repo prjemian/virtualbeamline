@@ -65,6 +65,7 @@ RUN echo # end ------------------- assemble_synApps.sh -------------------
 # # run the script now
 RUN bash assemble_synApps.sh
 
+ENV AREA_DETECTOR=${SUPPORT}/areaDetector-R3-7
 WORKDIR ${SUPPORT}
 # RUN ls -lAFgh
 
@@ -76,7 +77,6 @@ RUN cp EXAMPLE_RELEASE.local         RELEASE.local && \
     cp EXAMPLE_RELEASE_PRODS.local   RELEASE_PRODS.local && \
     cp EXAMPLE_CONFIG_SITE.local     CONFIG_SITE.local && \
     sed -i s:'#ADSIMDETECTOR=':'ADSIMDETECTOR=':g RELEASE.local && \
-    sed -i s:'#ADURL=':'ADURL=':g RELEASE.local && \
     sed -i s:'#PVADRIVER=':'PVADRIVER=':g RELEASE.local && \
     sed -i s:'SUPPORT=/corvette/home/epics/devel':'SUPPORT=/opt/synApps/support':g RELEASE_SUPPORT.local && \
     sed -i s:'asyn-4-36':'asyn-R4-36':g RELEASE_LIBS.local && \
@@ -99,9 +99,11 @@ RUN cp EXAMPLE_commonPlugins.cmd           commonPlugins.cmd && \
     sed -i s:'#startPVAServer':'startPVAServer':g commonPlugins.cmd
 # done editing
 
+WORKDIR ${AREA_DETECTOR}/ADSimDetector/iocs/simDetectorIOC/iocBoot
+RUN tar czf ${SUPPORT}/../iocSimDetector-3.7.tar.gz iocSimDetector
+
 WORKDIR ${SUPPORT}
 # archive the template IOC, for making new XXX IOCs
-RUN tar czf ../../xxx-R6-1.tar.gz xxx-R6-1
-RUN make -j2 all
-
-RUN make clean
+RUN tar czf ${SUPPORT}/../xxx-R6-1.tar.gz xxx-R6-1
+RUN make -j2 all && \
+    make clean

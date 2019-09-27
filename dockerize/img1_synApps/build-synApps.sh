@@ -42,15 +42,15 @@ sed -i s/'ALLENBRADLEY='/'#ALLENBRADLEY='/g assemble_synApps.sh && \
 # # run the script now
 bash assemble_synApps.sh
 
+AREA_DETECTOR=${SUPPORT}/areaDetector-R3-7
 # recommended edits: https://areadetector.github.io/master/install_guide.html
-cd ${SUPPORT}/areaDetector-R3-7/configure
+cd ${AREA_DETECTOR}/configure
 cp EXAMPLE_RELEASE.local         RELEASE.local && \
     cp EXAMPLE_RELEASE_SUPPORT.local RELEASE_SUPPORT.local && \
     cp EXAMPLE_RELEASE_LIBS.local    RELEASE_LIBS.local && \
     cp EXAMPLE_RELEASE_PRODS.local   RELEASE_PRODS.local && \
     cp EXAMPLE_CONFIG_SITE.local     CONFIG_SITE.local && \
     sed -i s:'#ADSIMDETECTOR=':'ADSIMDETECTOR=':g RELEASE.local && \
-    sed -i s:'#ADURL=':'ADURL=':g RELEASE.local && \
     sed -i s:'#PVADRIVER=':'PVADRIVER=':g RELEASE.local && \
     sed -i s:'SUPPORT=/corvette/home/epics/devel':'SUPPORT=/opt/synApps/support':g RELEASE_SUPPORT.local && \
     sed -i s:'asyn-4-36':'asyn-R4-36':g RELEASE_LIBS.local && \
@@ -65,7 +65,7 @@ cp EXAMPLE_RELEASE.local         RELEASE.local && \
     sed -i s:'sscan-2-11-3':'sscan-R2-11-3':g RELEASE_PRODS.local && \
     sed -i s:'devIocStats-3-1-16':'iocStats-3-1-16':g RELEASE_PRODS.local && \
     sed -i s:'EPICS_BASE=/corvette/usr/local/epics-devel/base-7.0.3':'EPICS_BASE=/opt/base-7.0.3':g RELEASE_PRODS.local
-cd ${SUPPORT}/areaDetector-R3-7/ADCore/iocBoot
+cd ${AREA_DETECTOR}/ADCore/iocBoot
 cp EXAMPLE_commonPlugins.cmd           commonPlugins.cmd && \
     cp EXAMPLE_commonPlugin_settings.req   commonPlugin_settings.req && \
     sed -i s:'#NDPvaConfigure':'NDPvaConfigure':g commonPlugins.cmd && \
@@ -73,8 +73,11 @@ cp EXAMPLE_commonPlugins.cmd           commonPlugins.cmd && \
     sed -i s:'#startPVAServer':'startPVAServer':g commonPlugins.cmd
 # done editing
 
+cd ${AREA_DETECTOR}/ADSimDetector/iocs/simDetectorIOC/iocBoot/iocSimDetector
+tar czf ${SUPPORT}/../iocSimDetector-3.7.tar.gz iocSimDetector
+
 cd ${SUPPORT}
 # archive the template IOC, for making new XXX IOCs
-tar czf ../../xxx-R6-1.tar.gz xxx-R6-1
+tar czf ${SUPPORT}/../xxx-R6-1.tar.gz xxx-R6-1
 make -j2 all
 make clean
