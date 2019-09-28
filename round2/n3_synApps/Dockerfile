@@ -6,6 +6,7 @@ USER  root
 WORKDIR /home
 
 # Install libraries from offical repo needed by synApps
+# * wget needed by assemble_synApps.sh
 # * re2c needed overall
 # * area detector needs:
 #    * libusb (newer faster usb support)
@@ -20,6 +21,7 @@ RUN \
        libusb-1.0-0-dev \
        libx11-dev \
        re2c \
+       wget \
        x11-xserver-utils \
        xorg-dev \
        xvfb \
