@@ -13,7 +13,11 @@ RUN apt-get update  -y && \
         nano  \
         libreadline-dev  \
         screen \
+        vi \
         && \
     rm -rf /var/lib/apt/lists/*
 
+# additional software packages added here
 ENV APP_ROOT="/opt"
+# for use with `crontab -e`
+ENV EDITOR="nano"
