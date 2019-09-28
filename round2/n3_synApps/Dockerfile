@@ -44,29 +44,29 @@ WORKDIR ${APP_ROOT}
 ENV HASH=cc5adba5b8848c9cb98ab96768d668ae927d8859
 ADD https://raw.githubusercontent.com/EPICS-synApps/support/${HASH}/assemble_synApps.sh ./
 
-# # edit the script first!
-# RUN sed -i s:'/APSshare/epics/base-3.15.6':'/opt/epics-base':g assemble_synApps.sh
-# # do NOT build these for linux-x86_64
-# RUN sed -i s:'ALLENBRADLEY=':'#ALLENBRADLEY=':g assemble_synApps.sh && \
-#     sed -i s:'CAMAC=':'#CAMAC=':g assemble_synApps.sh && \
-#     sed -i s:'DAC128V=':'#DAC128V=':g assemble_synApps.sh && \
-#     sed -i s:'DELAYGEN=':'#DELAYGEN=':g assemble_synApps.sh && \
-#     sed -i s:'DXP=':'#DXP=':g assemble_synApps.sh && \
-#     sed -i s:'DXPSITORO=':'#DXPSITORO=':g assemble_synApps.sh && \
-#     sed -i s:'IP330=':'#IP330=':g assemble_synApps.sh && \
-#     sed -i s:'IPUNIDIG=':'#IPUNIDIG=':g assemble_synApps.sh && \
-#     sed -i s:'LOVE=':'#LOVE=':g assemble_synApps.sh && \
-#     sed -i s:'QUADEM=':'#QUADEM=':g assemble_synApps.sh && \
-#     sed -i s:'SOFTGLUE=':'#SOFTGLUE=':g assemble_synApps.sh && \
-#     sed -i s:'SOFTGLUEZYNQ=':'#SOFTGLUEZYNQ=':g assemble_synApps.sh && \
-#     sed -i s:'VME=':'#VME=':g assemble_synApps.sh && \
-#     sed -i s:'YOKOGAWA_DAS=':'#YOKOGAWA_DAS=':g assemble_synApps.sh
-# # done editing
+# edit the script first!
+RUN sed -i s:'/APSshare/epics/base-3.15.6':'/opt/epics-base':g assemble_synApps.sh
+# do NOT build these for linux-x86_64
+RUN sed -i s:'ALLENBRADLEY=':'#ALLENBRADLEY=':g assemble_synApps.sh && \
+    sed -i s:'CAMAC=':'#CAMAC=':g assemble_synApps.sh && \
+    sed -i s:'DAC128V=':'#DAC128V=':g assemble_synApps.sh && \
+    sed -i s:'DELAYGEN=':'#DELAYGEN=':g assemble_synApps.sh && \
+    sed -i s:'DXP=':'#DXP=':g assemble_synApps.sh && \
+    sed -i s:'DXPSITORO=':'#DXPSITORO=':g assemble_synApps.sh && \
+    sed -i s:'IP330=':'#IP330=':g assemble_synApps.sh && \
+    sed -i s:'IPUNIDIG=':'#IPUNIDIG=':g assemble_synApps.sh && \
+    sed -i s:'LOVE=':'#LOVE=':g assemble_synApps.sh && \
+    sed -i s:'QUADEM=':'#QUADEM=':g assemble_synApps.sh && \
+    sed -i s:'SOFTGLUE=':'#SOFTGLUE=':g assemble_synApps.sh && \
+    sed -i s:'SOFTGLUEZYNQ=':'#SOFTGLUEZYNQ=':g assemble_synApps.sh && \
+    sed -i s:'VME=':'#VME=':g assemble_synApps.sh && \
+    sed -i s:'YOKOGAWA_DAS=':'#YOKOGAWA_DAS=':g assemble_synApps.sh
+# done editing
 
-# # review
-# RUN echo # start ------------------- assemble_synApps.sh -------------------
-# RUN cat assemble_synApps.sh
-# RUN echo # end ------------------- assemble_synApps.sh -------------------
+# review
+RUN echo # start ------------------- assemble_synApps.sh -------------------
+RUN cat assemble_synApps.sh
+RUN echo # end ------------------- assemble_synApps.sh -------------------
 
 # # # run the script now
 # RUN bash assemble_synApps.sh
