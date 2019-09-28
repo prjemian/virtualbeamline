@@ -14,6 +14,7 @@ WORKDIR /home
 # * xvfb for remote GUI viewing
 
 RUN \
+    apt-get update  -y && \
     apt-get install -y  \
        libusb-dev \
        libusb-1.0-0-dev \
