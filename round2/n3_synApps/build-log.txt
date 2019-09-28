@@ -1,0 +1,63 @@
+Sending build context to Docker daemon  10.75kB
+Step 1/20 : FROM  prjemian/epics-base-7.0.3
+ ---> 1213b031523f
+Step 2/20 : LABEL version="1.0.0"       maintainer="prjemian <prjemian@gmail.com>"       lastupdate="2019-09-28"
+ ---> Using cache
+ ---> 67a3d212c4c2
+Step 3/20 : USER  root
+ ---> Using cache
+ ---> a760ee8a00ce
+Step 4/20 : WORKDIR /home
+ ---> Using cache
+ ---> b00b6941de0e
+Step 5/20 : RUN     apt-get update  -y &&     apt-get install -y         libusb-dev        libusb-1.0-0-dev        libx11-dev        re2c        x11-xserver-utils        xorg-dev        xvfb        &&     rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> ac4130b0b6da
+Step 6/20 : ENV APP_ROOT="/opt"
+ ---> Using cache
+ ---> 8eaeba7289b5
+Step 7/20 : ENV EDITOR="nano"
+ ---> Using cache
+ ---> 4932654cd82c
+Step 8/20 : ENV EPICS_HOST_ARCH=linux-x86_64
+ ---> Using cache
+ ---> 5135fd0e3b52
+Step 9/20 : ENV EPICS_ROOT="/${APP_ROOT}/base"
+ ---> Using cache
+ ---> 2d4ad08a25c8
+Step 10/20 : ENV PATH="${PATH}:${EPICS_ROOT}/bin/${EPICS_HOST_ARCH}"
+ ---> Using cache
+ ---> f18aa735b086
+Step 11/20 : ENV SUPPORT="${APP_ROOT}/synApps/support"
+ ---> Using cache
+ ---> f01392f41bc9
+Step 12/20 : ENV PATH="${PATH}:${SUPPORT}/utils"
+ ---> Using cache
+ ---> 337d55545c8f
+Step 13/20 : WORKDIR ${APP_ROOT}
+ ---> Using cache
+ ---> b90d1e2a79f4
+Step 14/20 : ENV HASH=cc5adba5b8848c9cb98ab96768d668ae927d8859
+ ---> Using cache
+ ---> e9c689fed719
+Step 15/20 : ADD https://raw.githubusercontent.com/EPICS-synApps/support/${HASH}/assemble_synApps.sh ./
+
+ ---> Using cache
+ ---> 6047e4992929
+Step 16/20 : RUN sed -i s:'/APSshare/epics/base-3.15.6':'/opt/epics-base':g assemble_synApps.sh
+ ---> Using cache
+ ---> a230787789c1
+Step 17/20 : RUN sed -i s:'ALLENBRADLEY=':'#ALLENBRADLEY=':g assemble_synApps.sh &&     sed -i s:'CAMAC=':'#CAMAC=':g assemble_synApps.sh &&     sed -i s:'DAC128V=':'#DAC128V=':g assemble_synApps.sh &&     sed -i s:'DELAYGEN=':'#DELAYGEN=':g assemble_synApps.sh &&     sed -i s:'DXP=':'#DXP=':g assemble_synApps.sh &&     sed -i s:'DXPSITORO=':'#DXPSITORO=':g assemble_synApps.sh &&     sed -i s:'IP330=':'#IP330=':g assemble_synApps.sh &&     sed -i s:'IPUNIDIG=':'#IPUNIDIG=':g assemble_synApps.sh &&     sed -i s:'LOVE=':'#LOVE=':g assemble_synApps.sh &&     sed -i s:'QUADEM=':'#QUADEM=':g assemble_synApps.sh &&     sed -i s:'SOFTGLUE=':'#SOFTGLUE=':g assemble_synApps.sh &&     sed -i s:'SOFTGLUEZYNQ=':'#SOFTGLUEZYNQ=':g assemble_synApps.sh &&     sed -i s:'VME=':'#VME=':g assemble_synApps.sh &&     sed -i s:'YOKOGAWA_DAS=':'#YOKOGAWA_DAS=':g assemble_synApps.sh
+ ---> Using cache
+ ---> 1ebcfbc0e45d
+Step 18/20 : RUN echo # start ------------------- assemble_synApps.sh -------------------
+ ---> Using cache
+ ---> 8db43bb133c6
+Step 19/20 : RUN cat assemble_synApps.sh
+ ---> Using cache
+ ---> c8660d359527
+Step 20/20 : RUN echo # end ------------------- assemble_synApps.sh -------------------
+ ---> Using cache
+ ---> e432f84a1416
+Successfully built e432f84a1416
+Successfully tagged prjemian/synapps-6.1:latest
