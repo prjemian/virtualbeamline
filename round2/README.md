@@ -1,4 +1,6 @@
 
+using portainer (from [portainer.io](https://portainer.io)), 
+see https://www.portainer.io/installation/
 
     docker run \
         -d \
