@@ -1,6 +1,6 @@
 
 ORG=prjemian
-REPO=synApps-6.1
+REPO=synapps-6.1
 LOGFILE=build-log.txt
 NET=virtualbeam
 
