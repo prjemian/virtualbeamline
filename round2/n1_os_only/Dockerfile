@@ -10,10 +10,10 @@ RUN apt-get update  -y && \
     apt-get upgrade -y && \
     apt-get install -y  \
         build-essential  \
-        nano  \
         libreadline-dev  \
+        nano  \
         screen \
-        vi \
+        vim \
         && \
     rm -rf /var/lib/apt/lists/*
 
