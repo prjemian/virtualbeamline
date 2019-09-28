@@ -14,7 +14,7 @@ ENV EDITOR="nano"
 # ============ EPICS base ============
 # Get the latest version of EPICS
 ENV EPICS_HOST_ARCH=linux-x86_64
-ENV EPICS_ROOT="/${APP_ROOT}/base"
+ENV EPICS_ROOT="${APP_ROOT}/base"
 ENV PATH="${PATH}:${EPICS_ROOT}/bin/${EPICS_HOST_ARCH}"
 
 WORKDIR ${APP_ROOT}
