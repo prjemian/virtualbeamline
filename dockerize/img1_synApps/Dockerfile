@@ -154,6 +154,12 @@ WORKDIR ${SUPPORT}
     # 13SIM1:Pva1:DriverVersion_RBV devAsynOctet::initCommon connectDevice failed asynManager:connectDevice port PVA1 not found
     # 13SIM1:Pva1:PortName_RBV devAsynOctet::initCommon connectDevice failed asynManager:connectDevice port PVA1 not found
 
+# startPVAServer comes from EPICS base
+#   <base>/dbd/softIocPVA.dbd:registrar(registerStartPVAServer)
+# Something needs to be configured (?in ADCore?) 
+#    to make sure this is added to the build
+
+
 # TODO: needs this script added
     # root@2c992a77fdd6:/opt/synApps/support/iocSimDetector# more run
     # #!/bin/sh
