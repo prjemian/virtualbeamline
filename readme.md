@@ -1,6 +1,6 @@
 * forked from https://github.com/KedoKudo/virtualbeamline
 
-* note, this fork has moved to its own repo: https://github.com/prjemian/virtualbeamline
+* note, this fork has moved to its own repo: https://github.com/prjemian/epics-docker
 
   No more commits after 2019-09-28
 
