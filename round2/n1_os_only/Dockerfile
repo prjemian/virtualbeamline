@@ -16,4 +16,4 @@ RUN apt-get update  -y && \
         && \
     rm -rf /var/lib/apt/lists/*
 
-ENV USER_ROOT="/opt"
+ENV APP_ROOT="/opt"
